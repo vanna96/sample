@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Mail\RegisterMail;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -63,6 +65,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $when = now()->addMinutes(10);
+
+        Mail::to($request->user())
+            ->later($when, new RegisterMail($order));
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

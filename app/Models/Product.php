@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -20,5 +21,17 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function setSlugAttribute($value)
+    {
+        // create an accessor
+        return Str::slug($value);
+    }
+
+    public function getDesription($data)
+    {
+        $data = [];
+        return $data;
     }
 }
