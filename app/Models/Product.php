@@ -23,15 +23,17 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function setSlugAttribute($value)
+    public function setNameAttribute($value)
     {
         // create an accessor
-        return Str::slug($value);
+        
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 
     public function getDesription($data)
     {
-        $data = [];
-        return $data;
+        // $data = [];
+        // return $data;
     }
 }

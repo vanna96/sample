@@ -6,25 +6,36 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Mail\ProductMail;
 use Mail;
+use Validator;
+use App\Http\Requests\StoreProductPost;
 
 class ProductController extends Controller
 {
-    public function create(Request $request)
+		public function __construct()
     {
-    	 //   	$post = new Product; 
-  //   	$post->name = $request->name;
-		// $post->price = $request->price;
-		// $post->status = $request->status;
-		// $post->profile = $request->profile;
-		// $post->category_id = $request->category_id;
-		// $post->slug = $post->setSlugAttribute('slug', $request->name);
-  //       $post->save();
+        $this->middleware('auth');
+		}
+		
+		public function create(){
+			return view('admin.product.create');
+		}
+    public function store(StoreProductPost $request)
+    {
+			// send store product
+			$product = new Product;
+			$product->name = $request->name;
+      $product->price = $request->price;
+			$product->status = $request->status;
+			$product->profile = 'sdfsdf';
+			$product->category_id = 1;			
+			$product->save();
 
-  //       $when = now()->addMinutes(10);
+			// send mail
+			// $when = now()->addMinutes(10);
+			// Mail::to($request->user())
+			// 	->later($when, new ProductMail($product));
+				
+			return redirect()->back()->with("success", "Access granted");
 
-		// Mail::to($request->user())
-		//     ->later($when, new ProductMail($order));
-
-  //       return view('');
     }
 }
