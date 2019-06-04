@@ -19,7 +19,7 @@
           <label for="folder-toggle-2" class="folder-toggle-label"><a>Categories</a></label>
           <ul>
             <li id="list-category"><a href="javascript::void(0)">List</a></li>
-            <li id="create-category" data-toggle="modal" data-target="#CategoryModal"><a href="javascript::void(0)">Create</a></li>
+            <li id="create-category" ><a href="{{ url('category/create') }}">Create</a></li>
           </ul>
         </li>
         <li class="folder"> 

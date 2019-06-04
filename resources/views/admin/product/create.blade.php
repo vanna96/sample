@@ -18,7 +18,7 @@
     <br> 
     <br>  
     <div class="container col-sm-8">
-        @if ($errors->any())
+        @if (count( $errors ) > 0)
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -37,14 +37,17 @@
             <hr>
             <form method="post" action="{{url('product/store')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
+                <input type="hidden" name="product_id" value="{{@$product->id}}">
+                <input type="hidden"  id="category_id_selected" value="{{@$product->category_id}}">
+                <input type="hidden"  id="status_id_selected" value="{{@$product->status}}">
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="name">Name <span style="color:#a51818">*</span> </label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required placeholder="Please fill name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ @$product?$product->name:old('name') }}" required placeholder="Please fill name">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">Category <span style="color:#a51818">*</span></label>
-                        <select class="form-control" name="category" required>
+                        <select class="form-control" name="category" required id="category_selected">
                             <option value="" disabled selected>Please select categroy</option>
                             @if(isset($categories) && count($categories) > 0)
                                 @foreach($categories as $category)
@@ -55,23 +58,32 @@
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">Price <span style="color:#a51818">*</span></label>
-                        <input type="number" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 required placeholder="Please fill price">
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ @$product?$product->price:old('price') }}" maxlength = 10 required placeholder="Please fill price">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
-                        <label for="status">Status <span style="color:#a51818">*</span></label>
-                        <select class="form-control" name="status" required>
+                        <label for="status" >Status <span style="color:#a51818">*</span></label>
+                        <select class="form-control" name="status" id="status_selected" required>
                             <option value="" disabled selected>Please select Status</option>                            
-                            <option value="0">Draft</option>
-                            <option value="1">Publish</option>
+                            <option value="0" >Draft</option>
+                            <option value="1" >Publish</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        <label for="status">Profile <span style="color:#a51818">*</span></label>
-                        <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror" required>
+                        <label for="status">Profile 
+                            @if(@$product)
+                            @else
+                                <span style="color:#a51818">*</span>
+                            @endif
+                        </label>
+                        @if(@$product)
+                            <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror">
+                        @else
+                            <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror" required>
+                        @endif
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">Description <span style="color:#a51818">*</span></label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10" required placeholder="Please fill description">{{ old('description') }}</textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10" required placeholder="Please fill description">{{@$product?$product->description:old('description') }}</textarea>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <button type="submit"  class="btn btn-primary pull-right">Save || Update</button>
@@ -92,11 +104,17 @@
 @endsection
 @section('script')
         <script type="text/javascript">
-            $('.active-link').attr('class', '');
-            $('#active-pro').attr('class', 'classWhite');
-            $('#active-pro-create').attr('class', 'classWhite');
             $(document).ready(function() {
-                $('.js-example-basic-single').select2();
+                var category_id_selected = $('#category_id_selected').val();
+                var status_id_selected = $('#status_id_selected').val();
+                // active class
+                $('.active-link').attr('class', '');
+                $('#active-pro').attr('class', 'classWhite');
+                $('#active-pro-create').attr('class', 'classWhite');
+                // select class
+                $('#category_selected').val(category_id_selected);
+                $('#status_selected').val(status_id_selected);
+
             });
         </script>
 @endsection

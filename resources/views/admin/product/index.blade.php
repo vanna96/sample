@@ -31,7 +31,9 @@
             
             <h4 class="site-title">Products</h4>
             <hr>  
-            <button class="btn btn-primary" data-toggle="modal" data-target="#ProductModal">Add new</button> 
+            <a href="{{ url('product/create')}}">
+                <button class="btn btn-primary">Add new</button> 
+            </a>            
             <br> 
             <br> 
             <table class="table table-bordered">

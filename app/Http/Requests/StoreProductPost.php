@@ -31,7 +31,6 @@ class StoreProductPost extends FormRequest
             'name' => 'required|max:50',
             'price' => 'required|numeric|min:0|max:999999',
             'status' => 'required',
-            'profile' => 'required',
             'description' => 'required|min:3|max:1000',
         ];
     }

@@ -6,18 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Mail\ProductMail;
 use App\Models\Category;
-use Mail;
-use Validator;
 use App\Http\Requests\StoreProductPost;
 use Carbon\Carbon;
+use Validator;
+use Mail;
 
 class ProductController extends Controller
 {
-		public function __construct()
-    {
-        $this->middleware('auth');
-		}
-		
 		public function index(){
 			$products = Product::paginate(10);
 			return view('admin.product.index', compact('products'));
@@ -27,30 +22,51 @@ class ProductController extends Controller
 			$categories = Category::all();
 			return view('admin.product.create', compact('categories'));
 		}
-    public function store(StoreProductPost $request)
-    {		
-			if($request->hasFile('profile')) {
-					$imageName = time().'.'.$request->profile->getClientOriginalExtension();
-			$request->profile->move(storage_path('app/public/products/'), $imageName);
+
+		public function edit($id){
+			$product = Product::find($id);
+			$categories = Category::all();
+			if ($product) {
+				return view('admin.product.create', compact('product', 'categories'));
 			}
+			return redirect('product/index');
+		}
 
-			// send store product
-			$product = new Product;
-			$product->name = $request->name;
-      $product->price = $request->price;
-			$product->status = $request->status;
-			$product->profile = !empty($imageName)?$imageName:'';
-			$product->category_id = $request->category;	
-			$product->description = $request->description;
-			$product->save();
+    public function store(StoreProductPost $request)
+    {	
+    	if ($request->product_id == null) {
+    		$request->validate([
+			    'profile' => 'required'
+			]);
+    	}
 
-			// send mail
-			$when = Carbon::now()->addsecond(5);
-			Mail::to('saoyati@gmail.com')
-				->later($when, new ProductMail($product));
+		if($request->hasFile('profile')) {
+				$imageName = time().'.'.$request->profile->getClientOriginalExtension();
+		$request->profile->move(storage_path('app/public/products/'), $imageName);
+		}
 
-			// return view('mail.product_mail', compact('product'));
-			// return redirect()->back()->with("success", "Access granted");
+		$oldProfile = Product::find($request->product_id);
+
+		// send store product
+		$product = Product::updateOrCreate([
+			'id' => $request->product_id
+		],[
+			'name' => $request->name,
+			'price' => $request->price,
+			'status' => $request->status,
+			'profile' => !empty($imageName)?$imageName:!empty($oldProfile)?$oldProfile->profile:'',
+			'category_id' => $request->category,	
+			'description' => $request->description
+
+		]);
+
+		// send mail
+		$when = Carbon::now()->addsecond(5);
+		Mail::to('saoyati@gmail.com')
+			->later($when, new ProductMail($product));
+
+		// return view('mail.product_mail', compact('product'));
+		// return redirect()->back()->with("success", "Access granted");
 
     }
 }
