@@ -8,17 +8,25 @@
             font-size:22px;
             text-al
         }
+        .inline{
+            display: inline-block;
+        }
     </style>
 @endsection
 @section('content')
 @include('layouts.header') 
-
-@foreach ($errors->all() as $message)
-        {{ $message}}
-@endforeach
     <br> 
     <br>  
-    <div class="container col-sm-6">
+    <div class="container col-sm-8">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="banner">
             
             <div class="banner-image"></div>
@@ -31,31 +39,39 @@
                 {{csrf_field()}}
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required >
+                        <label for="name">Name <span style="color:#a51818">*</span> </label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required placeholder="Please fill name">
                     </div>
-                    <div class="form-group col-sm-6 col-xs-6">
-                        <label for="category">Category</label>
-                        <select class="form-control" name="category">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                    <div class="form-group col-sm-6 col-xs-6">                        
+                        <label for="category">Category <span style="color:#a51818">*</span></label>
+                        <select class="form-control" name="category" required>
+                            <option value="" disabled selected>Please select categroy</option>
+                            @if(isset($categories) && count($categories) > 0)
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            @endif
                         </select>
+                    </div>                    
+                    <div class="form-group col-sm-6 col-xs-6">
+                        <label for="price">Price <span style="color:#a51818">*</span></label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 required placeholder="Please fill price">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
-                        <label for="price">Price</label>
-                        <input type="number" class="form-control" step="any" name="price" value="{{ old('price') }}" maxlength = 10 required>
-                    </div>
-                    <div class="form-group col-sm-6 col-xs-6">
-                        <label for="status">Status</label>
+                        <label for="status">Status <span style="color:#a51818">*</span></label>
                         <select class="form-control" name="status" required>
-                            <option value="1">Publish</option>
+                            <option value="" disabled selected>Please select Status</option>                            
                             <option value="0">Draft</option>
+                            <option value="1">Publish</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        <textarea class="form-control" name="description" id="" cols="30" rows="10" required>{{ old('description') }}</textarea>
+                        <label for="status">Profile <span style="color:#a51818">*</span></label>
+                        <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror" required>
+                    </div>
+                    <div class="form-group col-sm-12 col-xs-12">
+                        <label for="status">Description <span style="color:#a51818">*</span></label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10" required placeholder="Please fill description">{{ old('description') }}</textarea>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <button type="submit"  class="btn btn-primary pull-right">Save || Update</button>
@@ -79,5 +95,8 @@
             $('.active-link').attr('class', '');
             $('#active-pro').attr('class', 'classWhite');
             $('#active-pro-create').attr('class', 'classWhite');
+            $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+            });
         </script>
 @endsection

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\RegisterMail;
 use Mail;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -65,10 +66,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $when = now()->addMinutes(10);
-
-        Mail::to($request->user())
-            ->later($when, new RegisterMail($order));
+        $user = $data['name'];
+        $when = Carbon::now()->addsecond(5);
+        Mail::to($data['email'])
+            ->later($when, new RegisterMail($user));
 
         return User::create([
             'name' => $data['name'],

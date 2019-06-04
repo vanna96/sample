@@ -16,9 +16,12 @@ class ProductMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    protected $product;
+
+    public function __construct($product)
     {
-        //
+        $this->product = $product;
     }
 
     /**
@@ -28,6 +31,7 @@ class ProductMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('noreply@example.com')->subject($this->product->name)
+        ->view('mail.product_mail')->with(['product' => $this->product]);
     }
 }

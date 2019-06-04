@@ -31,7 +31,8 @@ class StoreProductPost extends FormRequest
             'name' => 'required|max:50',
             'price' => 'required|numeric|min:0|max:999999',
             'status' => 'required',
-            'description' => 'required|max:255',
+            'profile' => 'required',
+            'description' => 'required|min:3|max:1000',
         ];
     }
 
@@ -43,6 +44,7 @@ class StoreProductPost extends FormRequest
             'price.digits' => 'This field Price allow only 8 number',
             'status.required' => 'This field Status is required',
             'description.required' => 'This field Description is required',
+            'description.max' => 'This field Name allow only 1000 string max'
         ];
     }
 }

@@ -24,5 +24,7 @@ Route::get('category/create', 'CategoryController@create');
 Route::post('category/store', 'CategoryController@store');
 
 // create product
+Route::get('product/index', 'ProductController@index');
 Route::get('product/create', 'ProductController@create');
+// Route::get('product/edit/{id}', 'ProductController@edit');
 Route::post('product/store', 'ProductController@store');

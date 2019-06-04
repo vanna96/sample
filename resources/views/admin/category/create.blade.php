@@ -6,7 +6,6 @@
         }
         span{
             font-size:22px;
-            text-al
         }
     </style>
 @endsection
@@ -15,16 +14,17 @@
     <br> 
     <br>  
     <div class="container col-sm-6">
+    @if($errors->has())
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+    @endif
         <div class="banner">
-            
             <div class="banner-image"></div>
-            
             <div class="primary-wrapper">
-            
             <h4 class=""><i class="fa fa-pencil" aria-hidden="true"></i>Category</h4>
             <hr>
-            <div class="row">
-                                       
+            <div class="row">       
             </div>
             
         </div>

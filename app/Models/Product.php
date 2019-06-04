@@ -15,7 +15,8 @@ class Product extends Model
         'status',
         'profile',
         'category_id',
-        'slug'
+        'slug',
+        'description'
     ];
 
     public function category()
@@ -30,7 +31,7 @@ class Product extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
-
+    
     public function getDesription($data)
     {
         // $data = [];

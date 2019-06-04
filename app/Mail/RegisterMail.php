@@ -16,9 +16,10 @@ class RegisterMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+    protected $name;
+    public function __construct($name)
+    {      
+        $this->name = $name;
     }
 
     /**
@@ -28,6 +29,7 @@ class RegisterMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('noreply@example.com')->subject('Registration')
+        ->view('mail.registration_mail')->with(['name' => $this->name]);
     }
 }

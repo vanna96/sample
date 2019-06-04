@@ -10,7 +10,7 @@
           <input type="checkbox" name="folder-toggle-1" id="folder-toggle-1" class="folder-toggle-box hidden" />
           <label for="folder-toggle-1" class="folder-toggle-label"><a id="active-pro">Products</a></label>
           <ul>
-            <li id="list-product"><a href="javascript::void(0)">List</a></li>
+            <li id="list-product"><a href="{{url('product/index')}}" id="active-pro-list">List</a></li>
             <li id="create-product"><a href="{{url('product/create')}}" id="active-pro-create">Create</a></li>
           </ul>
         </li>
