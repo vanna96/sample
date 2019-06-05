@@ -28,14 +28,19 @@
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">Category <span style="color:#a51818">*</span></label>
-                        <select class="form-control" name="category" required id="category_selected">
-                            <option value="" disabled selected>Please select categroy</option>
-                            @if(isset($categories) && count($categories) > 0)
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endforeach
-                            @endif
-                        </select>
+                        <div class="input-group">
+                            <select class="form-control" name="category" required id="category_selected">
+                                <option value="" disabled selected>Please select categroy</option>
+                                @if(isset($categories) && count($categories) > 0)
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            <div class="input-group-append">
+                                <a style="background-color: #e8e4e4; width: 36px;"><center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center></a>
+                            </div>
+                        </div>
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">Price <span style="color:#a51818">*</span></label>
