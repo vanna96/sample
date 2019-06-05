@@ -10,16 +10,16 @@
           <input type="checkbox" name="folder-toggle-1" id="folder-toggle-1" class="folder-toggle-box hidden" />
           <label for="folder-toggle-1" class="folder-toggle-label"><a id="active-pro">Products</a></label>
           <ul>
-            <li id="list-product"><a href="{{url('product/index')}}" id="active-pro-list">List</a></li>
-            <li id="create-product"><a href="{{url('product/create')}}" id="active-pro-create">Create</a></li>
+            <li id="list-product"><a href="{{ route('product_index') }}" id="active-pro-list">List</a></li>
+            <li id="create-product"><a href="{{ route('product_create') }}" id="active-pro-create">Create</a></li>
           </ul>
         </li>
         <li class="folder"> 
           <input type="checkbox" name="folder-toggle-2" id="folder-toggle-2" class="folder-toggle-box hidden" />
-          <label for="folder-toggle-2" class="folder-toggle-label"><a>Categories</a></label>
+          <label for="folder-toggle-2" class="folder-toggle-label"><a id="active-cat">Categories</a></label>
           <ul>
-            <li id="list-category"><a href="javascript::void(0)">List</a></li>
-            <li id="create-category" ><a href="{{ url('category/create') }}">Create</a></li>
+            <li id="list-category"><a href="{{ route('category_index') }}" id="active-cat-list">List</a></li>
+            <li id="create-category" ><a href="{{ route('category_create') }}" id="active-cat-create">Create</a></li>
           </ul>
         </li>
         <li class="folder"> 

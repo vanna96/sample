@@ -24,6 +24,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{{asset('notifies/notify.js')}}"></script>
     <script src="{{asset('notifies/notify.min.js')}}"></script>
+    <script>
+      $(".alert-success").delay(2000).slideUp('slow');
+      $(".alert-danger").delay(2000).slideUp('slow');
+    </script>
     @yield('script')
   </body>
 </html>

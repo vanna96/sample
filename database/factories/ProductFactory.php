@@ -4,17 +4,16 @@
 
 use App\Model;
 use Faker\Generator as Faker;
-use App\Models\Product;
-use App\Models\Category;
 
-$factory->define(Product::class, function ($faker) {
+$factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
-        'name' =>  $faker->name ,
-        'price' =>  $faker->name,
-        'status' =>  $faker->word ,
-        'profile' =>  $faker->word ,
+        'name' => $faker->title,
+        'profile' => $faker->title,
+        'status' => $faker->numberBetween($min = 0, $max = 1),
+        'price' => $faker->randomNumber(4),
+        'description' => $faker->paragraph(rand(2, 10), true),
         'category_id' => function () {
-            return factory(Category::class)->create()->id;
-        }
+            return factory(App\Models\Category::class)->create()->id;
+        },
     ];
 });

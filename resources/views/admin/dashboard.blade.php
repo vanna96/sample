@@ -30,12 +30,12 @@
                     <div class="card" style="width:100%">
                         <div class="card-body">
                             <center>
-                                <h2 class="card-title"><span id="countProduct">{{ count(@$products) }}</span> <span>Products</span></h2>
+                                <h2 class="card-title">{{ count(@$products) }} <span>Products</span></h2>
                             </center>                            
                         </div>
                         <div class="card-footer">
                             <center>
-                                <a href="#" class="btn btn-primary">More info</a>
+                                <a href="{{ route('product_index' )}}#" class="btn btn-primary">More info</a>
                             </center>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="card-footer">
                             <center>
-                                <a href="#" class="btn btn-primary">More info</a>
+                                <a href="{{ route('category_index' )}}" class="btn btn-primary">More info</a>
                             </center>
                         </div>
                     </div>

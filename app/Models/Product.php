@@ -32,9 +32,8 @@ class Product extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
     
-    public function getDesription($data)
+    public function getShortDescriptionAttribute()
     {
-        // $data = [];
-        // return $data;
+        return "{$this->name} {$this->price}  {$this->description}";
     }
 }

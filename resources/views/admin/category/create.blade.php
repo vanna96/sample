@@ -1,40 +1,26 @@
 @extends('master')
 @section('style')
-    <style>
-        .site-title{
-            color: blue
-        }
-        span{
-            font-size:22px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('extents/product/css/product_index.css')}}">
 @endsection
 @section('content')
 @include('layouts.header') 
     <br> 
     <br>  
     <div class="container col-sm-8">
-    @if (count( $errors ) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        @include('messages.validate_errors')
         <div class="banner">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
-            <h4 class=""><i class="fa fa-pencil" aria-hidden="true"></i>Category</h4>
+            <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>Category</h4>
             <hr>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form method="post" action="{{ url('category/store') }}">
-                    {{csrf_field()}}             
+                    <form method="post" action="{{ route('category_store') }}">
+                    {{csrf_field()}}         
+                        <input type="hidden" name="category_id" value="{{@$category->id}}">    
                         <div class="form-group">
-                            <label for="category">Name</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="category_name" required value="{{ old('name') }}"  placeholder="Please fill name" required>
+                            <label for="category">Name<span style="color:#a51818">*</span></label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="category_name" required value="{{ @$category?$category->name:old('name') }}"  placeholder="Please fill name" required>
                         </div> 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary pull-right">Save || Update</button>
@@ -55,10 +41,5 @@
     </div>
 @endsection
 @section('script')
-        <script type="text/javascript">
-            $('.active-link').attr( "class", "" )
-            // $('#create-product').click(function(){
-            //     alert('sdfssdd');
-            // });
-        </script>
+<script src="{{asset('extents/category/script/category_create.js')}}"></script>
 @endsection

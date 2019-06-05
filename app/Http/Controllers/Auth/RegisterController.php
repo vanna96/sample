@@ -66,15 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = $data['name'];
-        $when = Carbon::now()->addsecond(5);
-        Mail::to($data['email'])
-            ->later($when, new RegisterMail($user));
-
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $name = $user->name;
+        $when = Carbon::now();
+        Mail::to($data['email'])
+            ->later($when, new RegisterMail($name));
+
+        return $user;
     }
 }

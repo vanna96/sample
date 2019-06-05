@@ -1,32 +1,13 @@
 @extends('master')
 @section('style')
-    <style>
-        .site-title{
-            color: blue
-        }
-        span{
-            font-size:22px;
-            text-al
-        }
-        .inline{
-            display: inline-block;
-        }
-    </style>
+<link rel="stylesheet" href="{{asset('extents/product/css/product_create.css')}}">
 @endsection
 @section('content')
 @include('layouts.header') 
     <br> 
     <br>  
     <div class="container col-sm-8">
-        @if (count( $errors ) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include('messages.validate_errors')
         <div class="banner">
             
             <div class="banner-image"></div>
@@ -35,7 +16,7 @@
             
             <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>Create Product</h4>
             <hr>
-            <form method="post" action="{{url('product/store')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('product_store')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <input type="hidden" name="product_id" value="{{@$product->id}}">
                 <input type="hidden"  id="category_id_selected" value="{{@$product->category_id}}">
@@ -103,18 +84,5 @@
     </div>
 @endsection
 @section('script')
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var category_id_selected = $('#category_id_selected').val();
-                var status_id_selected = $('#status_id_selected').val();
-                // active class
-                $('.active-link').attr('class', '');
-                $('#active-pro').attr('class', 'classWhite');
-                $('#active-pro-create').attr('class', 'classWhite');
-                // select class
-                $('#category_selected').val(category_id_selected);
-                $('#status_selected').val(status_id_selected);
-
-            });
-        </script>
+<script src="{{asset('extents/product/script/product_create.js')}}"></script>
 @endsection
