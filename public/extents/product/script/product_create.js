@@ -8,4 +8,9 @@ $(document).ready(function() {
     // select class
     $('#category_selected').val(category_id_selected);
     $('#status_selected').val(status_id_selected);
+
+    // click add category select
+    $('.input-group-append').click(function(){
+    	$('#CategoryModal').modal('show');
+    });
 });

@@ -7,17 +7,15 @@
             </button>
         </div>
         <div class="modal-body">
-            <div class="col-sm-12 col-xs-12">
-                <form action="">               
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" placeholder="Category name" id="category_name" required>
-                    </div>                        
-                </form>
+            <div class="col-sm-12 col-xs-12">    
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="categoryModalId" class="form-control" placeholder="Category name" required>
+                </div> 
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="close_modal">Close</button>
             <button type="button" class="btn btn-primary" id="save_change">Save changes</button>
         </div>
     </div>

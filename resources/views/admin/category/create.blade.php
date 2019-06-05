@@ -31,14 +31,6 @@
             
         </div>
     </div>
-    <!-- ProductModal -->
-    <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="ProductModalLabel" aria-hidden="true">
-        @include('admin.modal.product_modal')
-    </div>
-    <!-- ProductModal -->
-    <div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="CategoryModalLabel" aria-hidden="true">
-        @include('admin.modal.category_modal')
-    </div>
 @endsection
 @section('script')
 <script src="{{asset('extents/category/script/category_create.js')}}"></script>

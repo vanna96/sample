@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\StoreCategory;
+use Response;
 
 class CategoryController extends Controller
 {
@@ -47,5 +48,20 @@ class CategoryController extends Controller
             return redirect()->route('category_index')->with('success', 'Category has delete successfully.');
         }
         return redirect()->route('category_index')->with('error', 'Whoop!!! this Category not found.');
+    }
+
+    public function ajax(Request $request){
+        $find = Category::where('name',$request->name)->first();
+        if ($find) {
+            $message = 0;
+            return Response::json($message);
+        }else{
+            $data = Category::create([
+                'name' => $request->name
+            ]);
+            $message = 1;
+            return Response::json(['message' => $message, 'data' => $data]);
+        }
+        
     }
 }

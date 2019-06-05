@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth', 'authLog']], function () {
     Route::get('category/edit/{id}', 'CategoryController@edit')->name('category_edit');
     Route::post('category/store', 'CategoryController@store')->name('category_store');
     Route::get('category/delete/{id}', 'CategoryController@delete')->name('category_delete');
+    Route::get('category/ajax', 'CategoryController@ajax')->name('ajax');
 
     // create product
     Route::get('product/index', 'ProductController@index')->name('product_index');

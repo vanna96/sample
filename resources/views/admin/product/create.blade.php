@@ -76,12 +76,7 @@
                     </div>
                 </div>
             </form>
-            
         </div>
-    </div>
-    <!-- ProductModal -->
-    <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="ProductModalLabel" aria-hidden="true">
-        @include('admin.modal.product_modal')
     </div>
     <!-- ProductModal -->
     <div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="CategoryModalLabel" aria-hidden="true">
@@ -90,4 +85,137 @@
 @endsection
 @section('script')
 <script src="{{asset('extents/product/script/product_create.js')}}"></script>
+<script>
+// save change click modal
+$('#save_change').click(function(){
+    var categoryModalvalue = $('#categoryModalId').val();
+    if (categoryModalvalue == '' && categoryModalvalue.trim() == '') {
+        $('#categoryModalId').css('border-color', 'red');
+        $.notify({
+            // options
+            title: '<strong>Whoop!!!</strong>',
+            message: "<br>Category name field is required",
+            icon: 'glyphicon glyphicon-ok',
+            url: '#',
+            target: '_blank'
+        },{
+            // settings
+            element: 'body',
+            //position: null,
+            type: "danger",
+            //allow_dismiss: true,
+            //newest_on_top: false,
+            showProgressbar: false,
+            placement: {
+                from: "top",
+                align: "right"
+            },
+            offset: 20,
+            spacing: 10,
+            z_index: 1031,
+            delay: 3300,
+            timer: 1000,
+            url_target: '_blank',
+            mouse_over: null,
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutRight'
+            },
+            onShow: null,
+            onShown: null,
+            onClose: null,
+            onClosed: null,
+            icon_type: 'class',
+        });
+    }else{
+        $('#categoryModalId').css('border-color', '');
+        $.ajax({
+            type: "GET",
+            url: "{{ url('category/ajax') }}",
+            data: {name: categoryModalvalue},
+            dataType: 'json',
+            success: function (response) {
+                if (response.message == '1') {
+                    $('#close_modal').trigger( "click" );
+                    $('#categoryModalId').val('');
+                    $('#category_selected').append('<option value='+response.data.id+'>'+response.data.name+'</option>');
+                    $.notify({
+                        // options
+                        title: '<strong>Success</strong>',
+                        message: "<br>Category name has create successfully",
+                        icon: 'glyphicon glyphicon-ok',
+                        url: '#',
+                        target: '_blank'
+                    },{
+                        // settings
+                        element: 'body',
+                        //position: null,
+                        type: "success",
+                        //allow_dismiss: true,
+                        //newest_on_top: false,
+                        showProgressbar: false,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 1031,
+                        delay: 3300,
+                        timer: 1000,
+                        url_target: '_blank',
+                        mouse_over: null,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutRight'
+                        },
+                        onShow: null,
+                        onShown: null,
+                        onClose: null,
+                        onClosed: null,
+                        icon_type: 'class',
+                    });
+                }else{
+                    $.notify({
+                        // options
+                        title: '<strong>Whoop!!!</strong>',
+                        message: "<br>Category name already exist",
+                        icon: 'glyphicon glyphicon-ok',
+                        url: '#',
+                        target: '_blank'
+                    },{
+                        // settings
+                        element: 'body',
+                        //position: null,
+                        type: "danger",
+                        //allow_dismiss: true,
+                        //newest_on_top: false,
+                        showProgressbar: false,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 1031,
+                        delay: 3300,
+                        timer: 1000,
+                        url_target: '_blank',
+                        mouse_over: null,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutRight'
+                        },
+                        onShow: null,
+                        onShown: null,
+                        onClose: null,
+                        onClosed: null,
+                        icon_type: 'class',
+                    });
+                }
+            }
+        });
+    }
+});
+</script>
 @endsection
