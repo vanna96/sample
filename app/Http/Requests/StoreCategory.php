@@ -34,8 +34,6 @@ class StoreCategory extends FormRequest
 
     public function messages(){
         return [
-            'name.required' => 'This field Name is required.',            
-            'name.max' => 'This field Name allow only 25 string max.',
         ];
     }
 }

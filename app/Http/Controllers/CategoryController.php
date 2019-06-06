@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\StoreCategory;
 use Response;
+use Lang;
 
 class CategoryController extends Controller
 {
@@ -23,7 +24,7 @@ class CategoryController extends Controller
         if ($category) {
             return view('admin.category.create', compact('category'));
         }
-        return redirect()->route('category_index')->with('error', 'Whoop!!! this category not found.');
+        return redirect()->route('category_index')->with('error', \Lang::get('sample.cat_not_found'));
     }
 
     public function store(StoreCategory $request){
@@ -38,16 +39,16 @@ class CategoryController extends Controller
         ],[
             'name' => $request->name
         ]);
-        return redirect()->route('category_index')->with('success', 'Category has create successfully');
+        return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_create_success'));
     }
 
     public function delete($id){
         $category = Category::find($id);
         if ($category) {
             $category->delete();
-            return redirect()->route('category_index')->with('success', 'Category has delete successfully.');
+            return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_delete_success'));
         }
-        return redirect()->route('category_index')->with('error', 'Whoop!!! this Category not found.');
+        return redirect()->route('category_index')->with('error', \Lang::get('sample.cat_not_found'));
     }
 
     public function ajax(Request $request){

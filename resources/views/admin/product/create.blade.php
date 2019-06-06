@@ -3,18 +3,15 @@
 <link rel="stylesheet" href="{{asset('extents/product/css/product_create.css')}}">
 @endsection
 @section('content')
-@include('layouts.header') 
+@include('layouts.header')
     <br> 
     <br>  
     <div class="container col-sm-8">
         @include('messages.validate_errors')
         <div class="banner">
-            
             <div class="banner-image"></div>
-            
             <div class="primary-wrapper">
-            
-            <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>Create Product</h4>
+            <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
             <hr>
             <form method="post" action="{{route('product_store')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
@@ -23,14 +20,14 @@
                 <input type="hidden"  id="status_id_selected" value="{{@$product->status}}">
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
-                        <label for="name">Name <span style="color:#a51818">*</span> </label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ @$product?$product->name:old('name') }}" required placeholder="Please fill name">
+                        <label for="name">@lang('sample.name') <span style="color:#a51818">*</span> </label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ @$product?$product->name:old('name') }}" required placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">                        
-                        <label for="category">Category <span style="color:#a51818">*</span></label>
+                        <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
                         <div class="input-group">
-                            <select class="form-control" name="category" required id="category_selected">
-                                <option value="" disabled selected>Please select categroy</option>
+                            <select class="form-control" name="category" required id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                                <option value="" disabled selected>@lang('sample.please_select')</option>
                                 @if(isset($categories) && count($categories) > 0)
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -43,19 +40,19 @@
                         </div>
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
-                        <label for="price">Price <span style="color:#a51818">*</span></label>
-                        <input type="number" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ @$product?$product->price:old('price') }}" maxlength = 10 required placeholder="Please fill price">
+                        <label for="price">@lang('sample.price') <span style="color:#a51818">*</span></label>
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ @$product?$product->price:old('price') }}" maxlength = 10 required placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
-                        <label for="status" >Status <span style="color:#a51818">*</span></label>
-                        <select class="form-control" name="status" id="status_selected" required>
-                            <option value="" disabled selected>Please select Status</option>                            
-                            <option value="0" >Draft</option>
-                            <option value="1" >Publish</option>
+                        <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
+                        <select class="form-control" name="status" id="status_selected" required oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                            <option value="" disabled selected>@lang('sample.please_select')</option>                            
+                            <option value="0" >@lang('sample.draf')</option>
+                            <option value="1" >@lang('sample.publish')</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        <label for="status">Profile 
+                        <label for="status">@lang('sample.profile') 
                             @if(@$product)
                             @else
                                 <span style="color:#a51818">*</span>
@@ -64,15 +61,15 @@
                         @if(@$product)
                             <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror">
                         @else
-                            <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror" required>
+                            <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         @endif
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        <label for="status">Description <span style="color:#a51818">*</span></label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10" required placeholder="Please fill description">{{@$product?$product->description:old('description') }}</textarea>
+                        <label for="status">@lang('sample.description') <span style="color:#a51818">*</span></label>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10" required placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{@$product?$product->description:old('description') }}</textarea>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        <button type="submit"  class="btn btn-primary pull-right">Save || Update</button>
+                        <button type="submit"  class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>
                     </div>
                 </div>
             </form>
@@ -141,8 +138,8 @@ $('#save_change').click(function(){
                     $('#category_selected').append('<option value='+response.data.id+'>'+response.data.name+'</option>');
                     $.notify({
                         // options
-                        title: '<strong>Success</strong>',
-                        message: "<br>Category name has create successfully",
+                        title: "<strong>@lang('sample.success')</strong>",
+                        message: "<br>@lang('sample.successfully')",
                         icon: 'glyphicon glyphicon-ok',
                         url: '#',
                         target: '_blank'
@@ -160,7 +157,7 @@ $('#save_change').click(function(){
                         },
                         offset: 20,
                         spacing: 10,
-                        z_index: 1031,
+                        z_index: 9999,
                         delay: 3300,
                         timer: 1000,
                         url_target: '_blank',
@@ -178,8 +175,8 @@ $('#save_change').click(function(){
                 }else{
                     $.notify({
                         // options
-                        title: '<strong>Whoop!!!</strong>',
-                        message: "<br>Category name already exist",
+                        title: "<strong>@lang('sample.whoop')</strong>",
+                        message: "<br>@lang('sample.already_exist')",
                         icon: 'glyphicon glyphicon-ok',
                         url: '#',
                         target: '_blank'
@@ -197,7 +194,7 @@ $('#save_change').click(function(){
                         },
                         offset: 20,
                         spacing: 10,
-                        z_index: 1031,
+                        z_index: 9999,
                         delay: 3300,
                         timer: 1000,
                         url_target: '_blank',

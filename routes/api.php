@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/people', function(){
+    $person = [
+        'first_name' => 'POUNG',
+        'last_name' => 'Sovanna',
+    ];
+    return $person;
+});
+
+
+Route::get('category/index', 'Api\CategoryController@index')->name('category-index');

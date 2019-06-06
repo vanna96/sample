@@ -11,10 +11,10 @@
         <div class="banner">            
             <div class="banner-image"></div> 
             <div class="primary-wrapper">    
-            <h4 class="site-title">Categories</h4>
+            <h4 class="site-title">@lang('sample.categories')</h4>
             <hr>  
             <a href="{{ route('category_create')}}">
-                <button class="btn btn-primary">Add new</button> 
+                <button class="btn btn-primary">@lang('sample.add_new')</button> 
             </a>            
             <br> 
             <br> 
@@ -22,8 +22,8 @@
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col" style="width:20%">Action</th>
+                    <th scope="col">@lang('sample.name')</th>
+                    <th scope="col" style="width:20%">@lang('sample.action')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,9 +34,9 @@
                                 <td>{{ $category->name }}</td>
                                 <td class="center">
                                 <a href="{{route('category_edit',[$category->id])}}">
-                                    <button class="btn btn-default" style="background-color:#ada8a896">Edit</button>
+                                    <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
                                 </a>
-                                <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">Delete</button>
+                                <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
                                 </td>
                             </tr>   
                         @endforeach
@@ -55,4 +55,11 @@
 @endsection
 @section('script')
 <script src="{{asset('extents/category/script/category_index.js')}}"></script>
+<script>
+    // delete category
+    function dataDelete(id){
+        var category_id = id;
+        $("#deleteItem").attr("href", "{{url('category/delete')}}/"+category_id);
+    }
+</script>
 @endsection

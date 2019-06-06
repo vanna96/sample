@@ -23,19 +23,19 @@
             
             <div class="primary-wrapper">
             
-            <h4 class="site-title">Welcome To Dashboard</h4>
+            <h4 class="site-title">@lang('sample.welcome_to_dashboard')</h4>
             <hr>
             <div class="row">
                 <div class="col-sm-6 col-xs-6" >
                     <div class="card" style="width:100%">
                         <div class="card-body">
                             <center>
-                                <h2 class="card-title">{{ count(@$products) }} <span>Products</span></h2>
+                                <h2 class="card-title">{{ count(@$products) }} <span>@lang('sample.products')</span></h2>
                             </center>                            
                         </div>
                         <div class="card-footer">
                             <center>
-                                <a href="{{ route('product_index' )}}#" class="btn btn-primary">More info</a>
+                                <a href="{{ route('product_index' )}}#" class="btn btn-primary">@lang('sample.more_info')</a>
                             </center>
                         </div>
                     </div>
@@ -44,12 +44,12 @@
                     <div class="card" style="width:100%">
                         <div class="card-body">
                             <center>
-                                <h2 class="card-title">{{ count(@$categories) }} <span>Categories</span></h2>
+                                <h2 class="card-title">{{ count(@$categories) }} <span>@lang('sample.categories')</span></h2>
                             </center>                          
                         </div>
                         <div class="card-footer">
                             <center>
-                                <a href="{{ route('category_index' )}}" class="btn btn-primary">More info</a>
+                                <a href="{{ route('category_index' )}}" class="btn btn-primary">@lang('sample.more_info')</a>
                             </center>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Validator;
 use Mail;
 use Storage;
+use Lang;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
 			if ($product) {
 				return view('admin.product.create', compact('product', 'categories'));
 			}
-			return redirect()->route('product_index')->with('error', 'Whoop!!! this product not found.');
+			return redirect()->route('product_index')->with('error', \Lang::get('sample.pro_not_found'));
 		}
 
     public function store(StoreProductPost $request)
@@ -70,7 +71,7 @@ class ProductController extends Controller
 			Mail::to('saoyati@gmail.com')
 				->later($when, new ProductMail($product));
 
-			return redirect()->route('product_index')->with('success', 'Product has create successfully');
+			return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_create_success'));
 		}
 		
 		public function delete($id){
@@ -81,8 +82,8 @@ class ProductController extends Controller
 				if(file_exists( public_path('storage/products/'). $image)){
 					Storage::disk('local')->delete('/public/products/'.$image);
 				}
-				return redirect()->route('product_index')->with('success', 'Product has delete successfully.');
+				return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_delete_success'));
 			}
-			return redirect()->route('product_index')->with('error', 'Whoop!!! this product not found.');
+			return redirect()->route('product_index')->with('error', \Lang::get('sample.pro_not_found'));
 		}
 }

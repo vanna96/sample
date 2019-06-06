@@ -11,10 +11,10 @@
         <div class="banner">            
             <div class="banner-image"></div> 
             <div class="primary-wrapper">    
-            <h4 class="site-title">Products</h4>
+            <h4 class="site-title">@lang('sample.products')</h4>
             <hr>  
             <a href="{{ route('product_create')}}">
-                <button class="btn btn-primary">Add new</button> 
+                <button class="btn btn-primary">@lang('sample.add_new')</button> 
             </a>            
             <br> 
             <br> 
@@ -22,13 +22,13 @@
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Profile</th>
-                    <th scope="col">name</th>
-                    <th scope="col">Price</th>                    
-                    <th scope="col">Category</th>
-                    <th scope="col">status</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">@lang('sample.profile')</th>
+                    <th scope="col">@lang('sample.name')</th>
+                    <th scope="col">@lang('sample.price')</th>                    
+                    <th scope="col">@lang('sample.category')</th>
+                    <th scope="col">@lang('sample.status')</th>
+                    <th scope="col">@lang('sample.description')</th>
+                    <th scope="col">@lang('sample.action')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,21 +44,21 @@
                                  @endif
                                 </td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->price }}</td>
+                                <td>${{ $product->price }}</td>
                                 <td>{{ !empty($product->category)?$product->category->name:'' }}</td>
                                 <td style="text-align:center">
                                     @if($product->status == 0)
-                                        <i class="fa fa-times" rel="Draff" style="color:#ab1515; font-size: 20px;" ></i>
+                                        <i class="fa fa-times" rel="@lang('sample.draf')" style="color:#ab1515; font-size: 20px;" ></i>
                                     @else
-                                        <i class="fa fa-paper-plane-o" style="color:#111173; font-size: 20px;" rel="Publish"></i>
+                                        <i class="fa fa-paper-plane-o" style="color:#111173; font-size: 20px;" rel="@lang('sample.publish')"></i>
                                     @endif
                                 </td>
                                 <td id="Stringdescription">{{ $product->description}}</td>
                                 <td class="center">
                                 <a href="{{route('product_edit',[$product->id])}}">
-                                    <button class="btn btn-default" style="background-color:#ada8a896">Edit</button>
+                                    <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
                                 </a>
-                                <button class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">Delete</button>
+                                <button class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
                                 </td>
                             </tr>   
                         @endforeach
@@ -77,4 +77,11 @@
 @endsection
 @section('script')
 <script src="{{asset('extents/product/script/product_index.js')}}"></script>
+<script>
+    // delete product
+    function dataDelete(id){
+        var product_id = id;
+        $("#deleteItem").attr("href", "{{url('product/delete')}}/"+product_id);
+    }
+</script>
 @endsection

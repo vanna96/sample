@@ -26,7 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.5/bootstrap-notify.min.js"></script>
     <script>
       $(".alert-success").delay(2000).slideUp('slow');
-      $(".alert-danger").delay(2000).slideUp('slow');
+      $(".danger_slideup").delay(2000).slideUp('slow');
     </script>
     @yield('script')
   </body>

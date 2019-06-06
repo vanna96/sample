@@ -37,13 +37,7 @@ class StoreProductPost extends FormRequest
 
     public function messages(){
         return [
-            'name.required' => 'This field Name is required',            
-            'name.max' => 'This field Name allow only 50 string max',
-            'price.required' => 'This field Price is required',
-            'price.digits' => 'This field Price allow only 8 number',
-            'status.required' => 'This field Status is required',
-            'description.required' => 'This field Description is required',
-            'description.max' => 'This field Name allow only 1000 string max'
+            
         ];
     }
 }

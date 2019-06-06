@@ -34,5 +34,12 @@ Route::group(['middleware' => ['auth', 'authLog']], function () {
     Route::get('product/edit/{id}', 'ProductController@edit')->name('product_edit');
     Route::post('product/store', 'ProductController@store')->name('product_store');
     Route::get('product/delete/{id}', 'ProductController@delete')->name('product_delete');
+
+    // translate
+
+    Route::get('locale/{locale}', function($locale){
+        Session::put('locale', $locale);
+        return redirect()->back();
+    });
 });
 

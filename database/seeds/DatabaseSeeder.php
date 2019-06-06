@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TruncateTable::class);
         // $this->call(UsersTableSeeder::class);
-        // $this->call(CategorySeed::class);
+        $this->call(CategorySeed::class);
         
     }
 }
