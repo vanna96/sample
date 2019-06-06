@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\PostResource;
 
-class CategoryResource extends JsonResource
+class ProductResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,8 +17,12 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'products' => ProductResource::collection($this->products)->take(5),
-            // 'products' => $this->products->take(5)->makeHidden(['created_at', 'updated_at'])
+            'price' => $this->price,
+            'status' => $this->status,
+            'profile' => $this->profile,
+            'category_id' => $this->category_id,
+            'slug' => $this->slug,
+            'description' => $this->description,
         ];
     }
 }

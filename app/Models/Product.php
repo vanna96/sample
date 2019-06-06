@@ -19,11 +19,11 @@ class Product extends Model
         'description'
     ];
 
-    protected $hidden =[
-        "category_id",
-        "created_at",
-        "updated_at",
-    ];
+    // protected $hidden =[
+    //     "category_id",
+    //     "created_at",
+    //     "updated_at",
+    // ];
 
     public function category()
     {
