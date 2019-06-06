@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
-        'name' => $faker->title,
-        'profile' => $faker->title,
+        'name' => $faker->word,
+        'profile' => $faker->word,
         'status' => $faker->numberBetween($min = 0, $max = 1),
         'price' => $faker->randomNumber(4),
         'description' => $faker->paragraph(rand(2, 10), true),
