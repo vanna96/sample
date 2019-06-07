@@ -13,6 +13,7 @@ return [
     'list' => 'List',
     'create' => 'Create',
     'languages' => 'Languages',
+    'product' => 'Product',
 
     // dashbaord
 
@@ -34,7 +35,7 @@ return [
     'you_sure' => 'Are you sure you want to delete this item?',
     'no' => 'No',
     'yes' => 'Yes',
-    'draf' => 'Draf',
+    'draf' => 'Draft',
     'publish' => 'Publish',
 
     // product create && edit

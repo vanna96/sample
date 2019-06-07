@@ -25,5 +25,4 @@ Route::get('/people', function(){
     return $person;
 });
 
-
-Route::get('category/index', 'Api\CategoryController@index')->name('category-index');
+Route::resource('category', 'Api\CategoryController');

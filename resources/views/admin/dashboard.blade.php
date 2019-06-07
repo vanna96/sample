@@ -30,7 +30,13 @@
                     <div class="card" style="width:100%">
                         <div class="card-body">
                             <center>
-                                <h2 class="card-title">{{ count(@$products) }} <span>@lang('sample.products')</span></h2>
+                                <h2 class="card-title">{{ count(@$products) }} 
+                                @if(count(@$products) > 1)
+                                    <span>@lang('sample.products')</span></h2>
+                                @else
+                                    <span>@lang('sample.product')</span></h2>
+                                @endif
+                                
                             </center>                            
                         </div>
                         <div class="card-footer">
@@ -44,7 +50,12 @@
                     <div class="card" style="width:100%">
                         <div class="card-body">
                             <center>
-                                <h2 class="card-title">{{ count(@$categories) }} <span>@lang('sample.categories')</span></h2>
+                                <h2 class="card-title">{{ count(@$categories) }} 
+                                @if(count(@$categories) > 1)
+                                    <span>@lang('sample.categories')</span></h2>
+                                @else
+                                    <span>@lang('sample.category')</span></h2>
+                                @endif                                
                             </center>                          
                         </div>
                         <div class="card-footer">

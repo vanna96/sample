@@ -11,6 +11,7 @@ return [
     'list' => 'បញ្ជី',
     'create' => 'បង្កើត',
     'languages' => 'ភាសា',
+    'product' => 'ផលិតផល',
 
     // dashbaord
 

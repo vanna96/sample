@@ -21,12 +21,12 @@
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="name">@lang('sample.name') <span style="color:#a51818">*</span> </label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ @$product?$product->name:old('name') }}" required placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <input type="text" title="@lang('sample.name')" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ @$product?$product->name:old('name') }}" required placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
                         <div class="input-group">
-                            <select class="form-control" name="category" required id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                            <select class="form-control" title="@lang('sample.category')" name="category" required id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
                                 <option value="" disabled selected>@lang('sample.please_select')</option>
                                 @if(isset($categories) && count($categories) > 0)
                                     @foreach($categories as $category)
@@ -41,11 +41,11 @@
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">@lang('sample.price') <span style="color:#a51818">*</span></label>
-                        <input type="number" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ @$product?$product->price:old('price') }}" maxlength = 10 required placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <input type="number" title="@lang('sample.price')" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ @$product?$product->price:old('price') }}" maxlength = 10 required placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
-                        <select class="form-control" name="status" id="status_selected" required oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                        <select class="form-control" title="@lang('sample.status')" name="status" id="status_selected" required oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
                             <option value="" disabled selected>@lang('sample.please_select')</option>                            
                             <option value="0" >@lang('sample.draf')</option>
                             <option value="1" >@lang('sample.publish')</option>
@@ -59,14 +59,14 @@
                             @endif
                         </label>
                         @if(@$product)
-                            <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror">
+                            <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror">
                         @else
-                            <input type="file" name="profile" class="form-control @error('profile') is-invalid @enderror" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                            <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         @endif
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">@lang('sample.description') <span style="color:#a51818">*</span></label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="" cols="30" rows="10" required placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{@$product?$product->description:old('description') }}</textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" title="@lang('sample.description')" name="description" id="" cols="30" rows="10" required placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{@$product?$product->description:old('description') }}</textarea>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <button type="submit"  class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>
@@ -135,7 +135,7 @@ $('#save_change').click(function(){
                 if (response.message == '1') {
                     $('#close_modal').trigger( "click" );
                     $('#categoryModalId').val('');
-                    $('#category_selected').append('<option value='+response.data.id+'>'+response.data.name+'</option>');
+                    $('#category_selected').append('<option value='+response.data.id+' selected>'+response.data.name+'</option>');
                     $.notify({
                         // options
                         title: "<strong>@lang('sample.success')</strong>",

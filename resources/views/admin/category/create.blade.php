@@ -20,7 +20,7 @@
                         <input type="hidden" name="category_id" value="{{@$category->id}}">    
                         <div class="form-group">
                             <label for="category">@lang('sample.name')<span style="color:#a51818">*</span></label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="category_name" required value="{{ @$category?$category->name:old('name') }}"  placeholder="@lang('sample.fill_name')" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="category_name" required value="{{ @$category?$category->name:old('name') }}"  placeholder="@lang('sample.fill_name')" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         </div> 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>
