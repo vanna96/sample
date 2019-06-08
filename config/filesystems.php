@@ -64,6 +64,11 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'product' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/products/'),
+        ],
+
     ],
 
 ];

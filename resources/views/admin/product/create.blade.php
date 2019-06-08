@@ -1,6 +1,16 @@
 @extends('master')
 @section('style')
 <link rel="stylesheet" href="{{asset('extents/product/css/product_create.css')}}">
+<style>
+    .select2-container--bootstrap4 .select2-selection {
+        height: 39px !important;
+        font-size: 18px;
+    }
+    .select2-container .select2-selection--single .select2-selection__rendered{
+        font-size: 17px;
+        color: #5c5d5fb0;
+    }
+</style>
 @endsection
 @section('content')
 @include('layouts.header')

@@ -72,4 +72,8 @@ return [
     'pro_not_found' => 'សុំទោស!!! ផលិតផលនេះរកមិនឃើញទេ',
     'pro_create_success' => 'ផលិតផលបានបង្កើតដោយជោគជ័យ',
     'pro_delete_success' => 'ផលិតផលបានលុបដោយជោគជ័យ',
+
+    // language
+    'english' => 'អង់គ្លេស',
+    'khmer' => 'ខ្មែរ',
 ];

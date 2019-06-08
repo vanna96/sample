@@ -42,48 +42,56 @@ class ProductController extends Controller
 				]);
     	}
 
-			if($request->hasFile('profile')) {
-					$imageName = time().'.'.$request->profile->getClientOriginalExtension();
-			$request->profile->move(storage_path('app/public/products/'), $imageName);
-			}
-
-			$oldProfile = Product::find($request->product_id);
-			if($oldProfile){
-				$oldProfile = $oldProfile->profile;
-			}else{
-				$oldProfile = '';
-			}
-			// send store product
-			$product = Product::updateOrCreate([
-				'id' => $request->product_id
-			],[
-				'name' => $request->name,
-				'price' => $request->price,
-				'status' => $request->status,
-				'profile' => !empty($imageName)?$imageName:$oldProfile,
-				'category_id' => $request->category,	
-				'description' => $request->description
-
-			]);
-
-			// send mail
-			$when = Carbon::now();
-			Mail::to('saoyati@gmail.com')
-				->later($when, new ProductMail($product));
-
-			return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_create_success'));
+		if($request->hasFile('profile')) {
+			$imageName = time().'.'.$request->profile->getClientOriginalExtension();
+			Storage::disk('product')->put($imageName, file_get_contents($request->profile -> getRealPath()));
+				// $request->profile->move(storage_path('app/public/products/'), $imageName);
 		}
-		
-		public function delete($id){
-			$product = Product::find($id);
-			if ($product) {
-				$image = $product->profile;
-				$product->delete();
-				if(file_exists( public_path('storage/products/'). $image)){
-					Storage::disk('local')->delete('/public/products/'.$image);
-				}
-				return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_delete_success'));
-			}
-			return redirect()->route('product_index')->with('error', \Lang::get('sample.pro_not_found'));
+
+		$oldProfile = Product::find($request->product_id);
+		if($oldProfile){
+			$oldProfile = $oldProfile->profile;
+		}else{
+			$oldProfile = '';
 		}
+		// send store product
+		$product = Product::updateOrCreate([
+			'id' => $request->product_id
+		],[
+			'name' => $request->name,
+			'price' => $request->price,
+			'status' => $request->status,
+			'profile' => !empty($imageName)?$imageName:$oldProfile,
+			'category_id' => $request->category,	
+			'description' => $request->description
+
+		]);
+		// delete old file
+		if(@$imageName && $oldProfile == ''){			
+		}elseif(@$imageName && $oldProfile !== ''){
+			if(file_exists( public_path('storage/products/'). $oldProfile)){
+				Storage::disk('product')->delete($oldProfile);
+			}
+		}
+
+		// send mail
+		$when = Carbon::now();
+		Mail::to('saoyati@gmail.com')
+			->later($when, new ProductMail($product));
+
+		return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_create_success'));
+	}
+	
+	public function delete($id){
+		$product = Product::find($id);
+		if ($product) {
+			$image = $product->profile;
+			$product->delete();
+			if(file_exists( public_path('storage/products/'). $image)){
+				Storage::disk('product')->delete($image);
+			}
+			return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_delete_success'));
+		}
+		return redirect()->route('product_index')->with('error', \Lang::get('sample.pro_not_found'));
+	}
 }

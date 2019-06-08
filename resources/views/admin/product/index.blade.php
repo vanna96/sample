@@ -18,53 +18,55 @@
             </a>            
             <br> 
             <br> 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">@lang('sample.profile')</th>
-                    <th scope="col">@lang('sample.name')</th>
-                    <th scope="col">@lang('sample.price')</th>                    
-                    <th scope="col">@lang('sample.category')</th>
-                    <th scope="col">@lang('sample.status')</th>
-                    <th scope="col">@lang('sample.description')</th>
-                    <th scope="col">@lang('sample.action')</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if(isset($products) && count($products) > 0)
-                        @foreach($products as $key=>$product)
-                            <tr>
-                                <th scope="row">{{$key + 1}}</th>
-                                <td style="text-align: center;">
-                                 @if(file_exists( public_path('storage/products/'). $product->profile))
-                                    <img src="{{asset('storage/products/'.$product->profile)}}" alt="">
-                                 @else
-
-                                 @endif
-                                </td>
-                                <td>{{ $product->name }}</td>
-                                <td>${{ $product->price }}</td>
-                                <td>{{ !empty($product->category)?$product->category->name:'' }}</td>
-                                <td style="text-align:center">
-                                    @if($product->status == 0)
-                                        <i class="fa fa-times" rel="@lang('sample.draf')" style="color:#ab1515; font-size: 20px;" ></i>
+            <div style="overflow-x:auto;">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">@lang('sample.profile')</th>
+                        <th scope="col">@lang('sample.name')</th>
+                        <th scope="col">@lang('sample.price')</th>                    
+                        <th scope="col">@lang('sample.category')</th>
+                        <th scope="col">@lang('sample.status')</th>
+                        <th scope="col">@lang('sample.description')</th>
+                        <th scope="col">@lang('sample.action')</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(isset($products) && count($products) > 0)
+                            @foreach($products as $key=>$product)
+                                <tr>
+                                    <th scope="row">{{$key + 1}}</th>
+                                    <td style="text-align: center;">
+                                    @if(file_exists( public_path('storage/products/'). $product->profile))
+                                        <img src="{{asset('storage/products/'.$product->profile)}}" alt="">
                                     @else
-                                        <i class="fa fa-paper-plane-o" style="color:#111173; font-size: 20px;" rel="@lang('sample.publish')"></i>
+
                                     @endif
-                                </td>
-                                <td id="Stringdescription">{{ $product->description}}</td>
-                                <td class="center">
-                                <a href="{{route('product_edit',[$product->id])}}">
-                                    <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
-                                </a>
-                                <button class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
-                                </td>
-                            </tr>   
-                        @endforeach
-                    @endif                                     
-                </tbody>
-            </table> 
+                                    </td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>${{ $product->price }}</td>
+                                    <td>{{ !empty($product->category)?$product->category->name:'' }}</td>
+                                    <td style="text-align:center">
+                                        @if($product->status == 0)
+                                            <i class="fa fa-times" rel="@lang('sample.draf')" style="color:#ab1515; font-size: 20px;" ></i>
+                                        @else
+                                            <i class="fa fa-paper-plane-o" style="color:#111173; font-size: 20px;" rel="@lang('sample.publish')"></i>
+                                        @endif
+                                    </td>
+                                    <td id="Stringdescription">{{ $product->description}}</td>
+                                    <td class="center">
+                                    <a href="{{route('product_edit',[$product->id])}}">
+                                        <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
+                                    </a>
+                                    <button class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
+                                    </td>
+                                </tr>   
+                            @endforeach
+                        @endif                                     
+                    </tbody>
+                </table> 
+            </div>
             @if(isset($products) && count($products) > 0)
                 {{ $products->links() }}  
             @endif                

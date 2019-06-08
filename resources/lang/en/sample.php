@@ -75,4 +75,8 @@ return [
     'pro_not_found' => 'Whoop!!! this product not found.',
     'pro_create_success' => 'Product has create successfully',
     'pro_delete_success' => 'Product has delete successfully.',
+
+    // language
+    'english' => 'English',
+    'khmer' => 'Khmer',
 ];

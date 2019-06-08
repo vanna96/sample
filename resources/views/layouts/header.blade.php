@@ -54,10 +54,18 @@
         </li>
         <li class="folder"> 
           <input type="checkbox" name="folder-toggle-4" id="folder-toggle-4" class="folder-toggle-box hidden" />
-          <label for="folder-toggle-4" class="folder-toggle-label"><a id="active-cat">@lang('sample.languages')</a></label>
+          <label for="folder-toggle-4" class="folder-toggle-label">
+          <a id="active-cat">
+            @lang('sample.languages')
+            @if (App::isLocale('en'))
+              (English)
+            @else
+              (ខ្មែរ)
+            @endif
+            </a></label>
           <ul>
-            <li id="english"><a href="{{url('locale/en')}}" >English</a></li>
-            <li id="khmer" ><a href="{{url('locale/kh')}}" >ភាសាខ្មែរ</a></li>
+            <li id="english"><a href="{{url('locale/en')}}" >@lang('sample.english')</a></li>
+            <li id="khmer" ><a href="{{url('locale/kh')}}" >@lang('sample.khmer')</a></li>
           </ul>
         </li>
       </ul>
