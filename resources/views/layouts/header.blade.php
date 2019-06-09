@@ -23,6 +23,22 @@
           </ul>
         </li>
         <li class="folder"> 
+          <input type="checkbox" name="folder-toggle-4" id="folder-toggle-4" class="folder-toggle-box hidden" />
+          <label for="folder-toggle-4" class="folder-toggle-label">
+          <a id="active-cat">
+            @lang('sample.languages')
+            @if (App::isLocale('en'))
+              (English)
+            @else
+              (ខ្មែរ)
+            @endif
+            </a></label>
+          <ul>
+            <li id="english"><a href="{{url('locale/en')}}" >@lang('sample.english')</a></li>
+            <li id="khmer" ><a href="{{url('locale/kh')}}" >@lang('sample.khmer')</a></li>
+          </ul>
+        </li>
+        <li class="folder"> 
         @guest
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -41,7 +57,7 @@
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('sample.logout') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -52,22 +68,7 @@
                 </li>
         @endguest
         </li>
-        <li class="folder"> 
-          <input type="checkbox" name="folder-toggle-4" id="folder-toggle-4" class="folder-toggle-box hidden" />
-          <label for="folder-toggle-4" class="folder-toggle-label">
-          <a id="active-cat">
-            @lang('sample.languages')
-            @if (App::isLocale('en'))
-              (English)
-            @else
-              (ខ្មែរ)
-            @endif
-            </a></label>
-          <ul>
-            <li id="english"><a href="{{url('locale/en')}}" >@lang('sample.english')</a></li>
-            <li id="khmer" ><a href="{{url('locale/kh')}}" >@lang('sample.khmer')</a></li>
-          </ul>
-        </li>
+        
       </ul>
     </nav>
     <label for="mobile-menu-toggle" class="mobile-menu-label hidden"></label>

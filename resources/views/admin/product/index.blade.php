@@ -6,7 +6,7 @@
 @include('layouts.header') 
     <br> 
     <br>  
-    <div class="container col-sm-8">
+    <div class="container col-sm-6">
         @include('messages.massage_alert')
         <div class="banner">            
             <div class="banner-image"></div> 

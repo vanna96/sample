@@ -6,7 +6,7 @@
 @include('layouts.header') 
     <br> 
     <br>  
-    <div class="container col-sm-8">
+    <div class="container col-sm-6">
         @include('messages.massage_alert')
         <div class="banner">            
             <div class="banner-image"></div> 
@@ -24,7 +24,7 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">@lang('sample.name')</th>
-                        <th scope="col" style="width:20%">@lang('sample.action')</th>
+                        <th scope="col" style="width:40%">@lang('sample.action')</th>
                         </tr>
                     </thead>
                     <tbody>

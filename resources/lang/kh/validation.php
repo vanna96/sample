@@ -150,7 +150,8 @@ return [
         'price' => 'តម្លៃ',
         'description' => 'សេចក្ដីពិពណ៌នា',
         'status' => 'ស្ថានភាព',
-        'profile' => 'ទម្រង់'
+        'profile' => 'ទម្រង់',
+        'category' => 'ប្រភេទ'
     ],
 
 ];

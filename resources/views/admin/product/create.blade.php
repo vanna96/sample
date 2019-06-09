@@ -16,7 +16,7 @@
 @include('layouts.header')
     <br> 
     <br>  
-    <div class="container col-sm-8">
+    <div class="container col-sm-6">
         @include('messages.validate_errors')
         <div class="banner">
             <div class="banner-image"></div>
@@ -36,7 +36,7 @@
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
                         <div class="input-group">
-                            <select class="form-control" title="@lang('sample.category')" name="category" required id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                            <select class="form-control @error('category') is-invalid @enderror" title="@lang('sample.category')" name="category" id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
                                 <option value="" disabled selected>@lang('sample.please_select')</option>
                                 @if(isset($categories) && count($categories) > 0)
                                     @foreach($categories as $category)
@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
-                        <select class="form-control" title="@lang('sample.status')" name="status" id="status_selected" required oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                        <select class="form-control @error('status') is-invalid @enderror" title="@lang('sample.status')" name="status" id="status_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
                             <option value="" disabled selected>@lang('sample.please_select')</option>                            
                             <option value="0" >@lang('sample.draf')</option>
                             <option value="1" >@lang('sample.publish')</option>
@@ -79,7 +79,7 @@
                         <textarea class="form-control @error('description') is-invalid @enderror" title="@lang('sample.description')" name="description" id="" cols="30" rows="10" required placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{@$product?$product->description:old('description') }}</textarea>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        <button type="submit"  class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>
+                        <button type="submit"  class="btn btn-primary pull-right" id="submit">@lang('sample.save') || @lang('sample.update')</button>
                     </div>
                 </div>
             </form>
@@ -145,7 +145,7 @@ $('#save_change').click(function(){
                 if (response.message == '1') {
                     $('#close_modal').trigger( "click" );
                     $('#categoryModalId').val('');
-                    $('#category_selected').append('<option value='+response.data.id+' selected>'+response.data.name+'</option>');
+                    $('#category_selected').append('<option value='+response.data.id+'>'+response.data.name+'</option>');
                     $.notify({
                         // options
                         title: "<strong>@lang('sample.success')</strong>",

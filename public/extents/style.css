@@ -1,7 +1,7 @@
 /* header script */
 .header-banner-top .primary-wrapper {
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 10000px;
   }
   .header-banner-top .hidden {
     display: none;
@@ -194,6 +194,13 @@
       content: 'Close';
     }
   }
+
+@media (min-width: 576px) and (max-width: 1024px){
+  .col-sm-6{
+    max-width: 100% !important;
+  }
+}
+
   
   /* active-link */
   .classWhite{
