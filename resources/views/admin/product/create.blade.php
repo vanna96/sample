@@ -8,7 +8,6 @@
     }
     .select2-container .select2-selection--single .select2-selection__rendered{
         font-size: 17px;
-        color: #5c5d5fb0;
     }
 </style>
 @endsection

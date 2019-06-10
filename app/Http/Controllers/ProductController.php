@@ -74,10 +74,13 @@ class ProductController extends Controller
 			}
 		}
 
-		// send mail
-		$when = Carbon::now();
-		Mail::to('saoyati@gmail.com')
-			->later($when, new ProductMail($product));
+		if ($request->product_id == null) {
+			// send mail
+			$when = Carbon::now();
+			Mail::to('saoyati@gmail.com')
+				->later($when, new ProductMail($product));
+		}
+		
 
 		return redirect()->route('product_index')->with('success', \Lang::get('sample.pro_create_success'));
 	}
