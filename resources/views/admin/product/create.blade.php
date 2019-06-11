@@ -6,8 +6,11 @@
         height: 39px !important;
         font-size: 18px;
     }
-    .select2-container .select2-selection--single .select2-selection__rendered{
-        font-size: 17px;
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        font-size: 16px;
+    }
+    .select2-results__option {
+        font-size: 16px;
     }
 </style>
 @endsection
@@ -92,6 +95,15 @@
 @section('script')
 <script src="{{asset('extents/product/script/product_create.js')}}"></script>
 <script>
+// select old value
+var StatusOldValue = '{{ old('status') }}';
+var CategoryOldValue = '{{ old('category') }}';
+if(StatusOldValue !== '') {
+    $('#status_selected').val(StatusOldValue).trigger('change');
+}
+if(CategoryOldValue !== '') {
+    $('#category_selected').val(CategoryOldValue).trigger('change');
+}
 // save change click modal
 $('#save_change').click(function(){
     var categoryModalvalue = $('#categoryModalId').val();
@@ -99,8 +111,8 @@ $('#save_change').click(function(){
         $('#categoryModalId').css('border-color', 'red');
         $.notify({
             // options
-            title: '<strong>Whoop!!!</strong>',
-            message: "<br>Category name field is required",
+            title: "<strong>@lang('sample.error')</strong>",
+            message: "<br>@lang('sample.category') @lang('sample.required_input')",
             icon: 'glyphicon glyphicon-ok',
             url: '#',
             target: '_blank'
@@ -144,7 +156,7 @@ $('#save_change').click(function(){
                 if (response.message == '1') {
                     $('#close_modal').trigger( "click" );
                     $('#categoryModalId').val('');
-                    $('#category_selected').append('<option value='+response.data.id+'>'+response.data.name+'</option>');
+                    $('#category_selected').append('<option value='+response.data.id+' selected>'+response.data.name+'</option>');
                     $.notify({
                         // options
                         title: "<strong>@lang('sample.success')</strong>",
@@ -181,11 +193,48 @@ $('#save_change').click(function(){
                         onClosed: null,
                         icon_type: 'class',
                     });
-                }else{
+                }else if(response.message == '0'){
                     $.notify({
                         // options
                         title: "<strong>@lang('sample.whoop')</strong>",
                         message: "<br>@lang('sample.already_exist')",
+                        icon: 'glyphicon glyphicon-ok',
+                        url: '#',
+                        target: '_blank'
+                    },{
+                        // settings
+                        element: 'body',
+                        //position: null,
+                        type: "danger",
+                        //allow_dismiss: true,
+                        //newest_on_top: false,
+                        showProgressbar: false,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 9999,
+                        delay: 3300,
+                        timer: 1000,
+                        url_target: '_blank',
+                        mouse_over: null,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutRight'
+                        },
+                        onShow: null,
+                        onShown: null,
+                        onClose: null,
+                        onClosed: null,
+                        icon_type: 'class',
+                    });
+                }else{
+                    $.notify({
+                        // options
+                        title: "<strong>@lang('sample.whoop')</strong>",
+                        message: "<br>@lang('sample.len')",
                         icon: 'glyphicon glyphicon-ok',
                         url: '#',
                         target: '_blank'

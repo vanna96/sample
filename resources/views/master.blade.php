@@ -15,8 +15,16 @@
     <link href="{{asset('/extents/links/css/select2-bootstrap4.min.css')}}" rel="stylesheet">
     <title>Sample</title>
     <link rel="stylesheet" href="{{asset('extents/style.css')}}">
-    <style>
-    </style>
+    @if (App::isLocale('en'))
+    @else
+      <style type="text/css">
+          @font-face {
+              font-family: KhmerOS;
+              src: url('{{ asset("cambodianfonts/Unicode/KhmerOS/KhmerOS.ttf") }}');
+          }
+      </style>
+    @endif
+    
     @yield('style')
   </head>
   <body>

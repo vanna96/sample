@@ -28,12 +28,9 @@ class CategoryController extends Controller
     }
 
     public function store(StoreCategory $request){
-        if($request->category_id == null){
-            $this->validate($request, [
-                'name' => 'required|unique:categories',
-            ]);
-        }
-        
+        $this->validate($request, [
+            'name' => 'required|unique:categories|min:5',
+        ]);        
         Category::updateOrCreate([
             'id' => $request->category_id
         ],[
@@ -52,17 +49,21 @@ class CategoryController extends Controller
     }
 
     public function ajax(Request $request){
-        $find = Category::where('name',$request->name)->first();
-        if ($find) {
-            $message = 0;
+        if(strlen($request->name) > 25){
+            $message = 2;
             return Response::json($message);
         }else{
-            $data = Category::create([
-                'name' => $request->name
-            ]);
-            $message = 1;
-            return Response::json(['message' => $message, 'data' => $data]);
-        }
-        
+            $find = Category::where('name',$request->name)->first();
+            if ($find) {
+                $message = 0;
+                return Response::json($message);
+            }else{
+                $data = Category::create([
+                    'name' => $request->name
+                ]);
+                $message = 1;
+                return Response::json(['message' => $message, 'data' => $data]);
+            }
+        }        
     }
 }

@@ -79,4 +79,6 @@ return [
     // language
     'english' => 'English',
     'khmer' => 'Khmer',
+    'error' => 'Error',
+    'len' => 'Category must be less than or equal 25 characters.'
 ];
