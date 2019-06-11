@@ -19,11 +19,8 @@ class CreateTableProducts extends Migration
             $table->double('price', 8, 2);
             $table->integer('status');
             $table->text('profile');
-            $table->unsignedInteger('category_id');
+            $table->integer('category_id');
             $table->timestamps();
-            // $table->foreign('category_id')
-            //             ->references('id')->on('categories')
-            //             ->onDelete('cascade');
 
 
         });

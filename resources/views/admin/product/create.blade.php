@@ -39,7 +39,7 @@
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
                         <div class="input-group">
                             <select class="form-control @error('category') is-invalid @enderror" title="@lang('sample.category')" name="category" id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
-                                <option value="" disabled selected>@lang('sample.please_select')</option>
+                                <option value="" disabled selected>@lang('sample.required_select')</option>
                                 @if(isset($categories) && count($categories) > 0)
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -58,7 +58,7 @@
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
                         <select class="form-control @error('status') is-invalid @enderror" title="@lang('sample.status')" name="status" id="status_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
-                            <option value="" disabled selected>@lang('sample.please_select')</option>                            
+                            <option value="" disabled selected>@lang('sample.required_select')</option>                            
                             <option value="0" >@lang('sample.draf')</option>
                             <option value="1" >@lang('sample.publish')</option>
                         </select>
