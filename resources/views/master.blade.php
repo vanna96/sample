@@ -19,7 +19,7 @@
     @else
       <style type="text/css">
           @font-face {
-              font-family: KhmerOS;
+              font-family: KhmerOS !important;
               src: url('{{ asset("cambodianfonts/Unicode/KhmerOS/KhmerOS.ttf") }}');
           }
       </style>
