@@ -66,6 +66,7 @@ return [
     'cat_not_found' => 'សុំទោស!!! ប្រភេទនេះរកមិនឃើញទេ',
     'cat_create_success' => 'ប្រភេទបានបង្កើតដោយជោគជ័យ',
     'cat_delete_success' => 'ប្រភេទបានលុបដោយជោគជ័យ',
+    'cat_update_success' => 'ប្រភេទ បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ',
 
     // product controller
 
