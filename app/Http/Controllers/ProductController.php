@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Mail\ProductMail;
 use App\Models\Category;
 use App\Http\Requests\StoreProductPost;
+use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use Validator;
 use Mail;
@@ -16,7 +17,7 @@ use Lang;
 class ProductController extends Controller
 {
 		public function index(){
-			$products = Product::paginate(10);
+			$products = Product::orderBy('id', 'DESC')->paginate(10);
 			return view('admin.product.index', compact('products'));
 		}
 
@@ -40,7 +41,12 @@ class ProductController extends Controller
 				$this->validate($request, [
 						'profile' => 'required|mimes:jpeg,jpg,png|max:1000',
 				]);
-    	}
+		}
+		
+		$find_category = Category::find($request->category);
+		if(! $find_category){
+			return redirect()->back()->with('error', \Lang::get('sample.cat_not_found'))->withInput(Input::all());;
+		}
 
 		if($request->hasFile('profile')) {
 			$imageName = time().'.'.$request->profile->getClientOriginalExtension();

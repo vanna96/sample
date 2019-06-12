@@ -30,7 +30,7 @@ class StoreProductPost extends FormRequest
         return [
             'name' => 'required|max:50',
             'price' => 'required|numeric|min:0|max:999999',
-            'status' => 'required|numeric',
+            'status' => 'required|numeric|between:0,1',
             'description' => 'required|min:3|max:1000',
             'category' => 'required|numeric'
         ];

@@ -80,5 +80,5 @@ return [
     'english' => 'English',
     'khmer' => 'Khmer',
     'error' => 'Error',
-    'len' => 'Category must be less than or equal 25 characters.'
+    'len' => 'Category must be between 5 and 25 characters.'
 ];

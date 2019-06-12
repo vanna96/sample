@@ -19,6 +19,7 @@
     <br> 
     <br>  
     <div class="container col-sm-6">
+        @include('messages.massage_alert')
         @include('messages.validate_errors')
         <div class="banner">
             <div class="banner-image"></div>
@@ -153,7 +154,7 @@ $('#save_change').click(function(){
             data: {name: categoryModalvalue},
             dataType: 'json',
             success: function (response) {
-                if (response.message == '1') {
+                if (response.message == 1) {
                     $('#close_modal').trigger( "click" );
                     $('#categoryModalId').val('');
                     $('#category_selected').append('<option value='+response.data.id+' selected>'+response.data.name+'</option>');
@@ -193,7 +194,8 @@ $('#save_change').click(function(){
                         onClosed: null,
                         icon_type: 'class',
                     });
-                }else if(response.message == '0'){
+                }else if(response.message == 0){
+                    console.log(2);
                     $.notify({
                         // options
                         title: "<strong>@lang('sample.whoop')</strong>",
