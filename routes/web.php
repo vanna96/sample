@@ -20,20 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'authLog']], function () {
-    // create category
-    Route::get('category/index', 'CategoryController@index')->name('category_index');
-    Route::get('category/create', 'CategoryController@create')->name('category_create');
-    Route::get('category/edit/{id}', 'CategoryController@edit')->name('category_edit');
-    Route::post('category/store', 'CategoryController@store')->name('category_store');
-    Route::get('category/delete/{id}', 'CategoryController@delete')->name('category_delete');
-    Route::get('category/ajax', 'CategoryController@ajax')->name('ajax');
+    //Category
+    Route::resource('category', 'CategoryController');    
+    Route::post('category/ajax', 'CategoryController@ajax')->name('ajax');
 
-    // create product
-    Route::get('product/index', 'ProductController@index')->name('product_index');
-    Route::get('product/create', 'ProductController@create')->name('product_create');
-    Route::get('product/edit/{id}', 'ProductController@edit')->name('product_edit');
-    Route::post('product/store', 'ProductController@store')->name('product_store');
-    Route::get('product/delete/{id}', 'ProductController@delete')->name('product_delete');
+    // product   
+    Route::resource('product', 'ProductController');
 
     // translate
 

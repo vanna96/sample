@@ -10,16 +10,16 @@
           <input type="checkbox" name="folder-toggle-1" id="folder-toggle-1" class="folder-toggle-box hidden" />
           <label for="folder-toggle-1" class="folder-toggle-label"><a id="active-pro">@lang('sample.products')</a></label>
           <ul>
-            <li id="list-product"><a href="{{ route('product_index') }}" id="active-pro-list">@lang('sample.list')</a></li>
-            <li id="create-product"><a href="{{ route('product_create') }}" id="active-pro-create">@lang('sample.create')</a></li>
+            <li id="list-product"><a href="{{ route('product.index') }}" id="active-pro-list">@lang('sample.list')</a></li>
+            <li id="create-product"><a href="{{ route('product.create') }}" id="active-pro-create">@lang('sample.create')</a></li>
           </ul>
         </li>
         <li class="folder"> 
           <input type="checkbox" name="folder-toggle-2" id="folder-toggle-2" class="folder-toggle-box hidden" />
           <label for="folder-toggle-2" class="folder-toggle-label"><a id="active-cat">@lang('sample.categories')</a></label>
           <ul>
-            <li id="list-category"><a href="{{ route('category_index') }}" id="active-cat-list">@lang('sample.list')</a></li>
-            <li id="create-category" ><a href="{{ route('category_create') }}" id="active-cat-create">@lang('sample.create')</a></li>
+            <li id="list-category"><a href="{{ route('category.index') }}" id="active-cat-list">@lang('sample.list')</a></li>
+            <li id="create-category" ><a href="{{ route('category.create') }}" id="active-cat-create">@lang('sample.create')</a></li>
           </ul>
         </li>
         <li class="folder"> 

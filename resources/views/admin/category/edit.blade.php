@@ -8,6 +8,7 @@
     <br>  
     <div class="container col-sm-6">
         @include('messages.validate_errors')
+        @include('messages.massage_alert')
         <div class="banner">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
@@ -15,11 +16,12 @@
             <hr>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form method="post" action="{{ route('category.store') }}">
-                    {{csrf_field()}}             
+                <form action="{{ route('category.update', $category->id) }}" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">    
                         <div class="form-group">
                             <label for="category">@lang('sample.name')<span style="color:#a51818">*</span></label>
-                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required value="{{ old('name') }}"  placeholder="@lang('sample.fill_name')" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required value="{{old('name') ? old('name') : $category->name}}"  placeholder="@lang('sample.fill_name')" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         </div> 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>

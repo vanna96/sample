@@ -41,7 +41,7 @@
                         </div>
                         <div class="card-footer">
                             <center>
-                                <a href="{{ route('product_index' )}}#" class="btn btn-primary">@lang('sample.more_info')</a>
+                                <a href="{{ route('product.index' )}}#" class="btn btn-primary">@lang('sample.more_info')</a>
                             </center>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="card-footer">
                             <center>
-                                <a href="{{ route('category_index' )}}" class="btn btn-primary">@lang('sample.more_info')</a>
+                                <a href="{{ route('category.index' )}}" class="btn btn-primary">@lang('sample.more_info')</a>
                             </center>
                         </div>
                     </div>

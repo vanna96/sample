@@ -26,12 +26,16 @@
             <div class="primary-wrapper">
             <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
             <hr>
-            <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
-                {{csrf_field()}}
+            <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">  
+
+                <input type="hidden"  id="category_id_selected" value="{{@$product->category_id}}">
+                <input type="hidden"  id="status_id_selected" value="{{@$product->status}}">
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="name">@lang('sample.name') <span style="color:#a51818">*</span> </label>
-                        <input type="text" title="@lang('sample.name')" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <input type="text" title="@lang('sample.name')" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name') ? old('name') : $product->name}}" required placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
@@ -51,7 +55,7 @@
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">@lang('sample.price') <span style="color:#a51818">*</span></label>
-                        <input type="number" title="@lang('sample.price')" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 required placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <input type="number" title="@lang('sample.price')" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{old('price') ? old('price') : $product->price}}" maxlength = 10 required placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
@@ -63,14 +67,14 @@
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">@lang('sample.profile') 
-                                <span style="color:#a51818">*</span>
+                            
                         </label>
-                        <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror">
                         
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">@lang('sample.description') <span style="color:#a51818">*</span></label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" title="@lang('sample.description')" name="description" id="" cols="30" rows="10" required placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{ old('description') }}</textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" title="@lang('sample.description')" name="description" id="" cols="30" rows="10" required placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{old('description') ? old('description') : $product->description}}</textarea>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <button type="submit"  class="btn btn-primary pull-right" id="submit">@lang('sample.save') || @lang('sample.update')</button>

@@ -5,86 +5,123 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\StoreCategory;
+use Input;
 use Response;
 use Lang;
 
 class CategoryController extends Controller
 {
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $categories = Category::orderBy('id', 'DESC')->paginate(10);
         return view('admin.category.index', compact('categories'));
     }
 
-    public function create(){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         return view('admin.category.create');
     }
 
-    public function edit($id){
-        $category = Category::find($id);
-        if ($category) {
-            return view('admin.category.create', compact('category'));
-        }
-        return redirect()->route('category_index')->with('error', \Lang::get('sample.cat_not_found'));
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreCategory  $request)
+    {
+        Category::create([
+            'name' => $request->name
+        ]);
+        return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_create_success'));
     }
 
-    public function store(StoreCategory $request){
-        $this->validate($request, [
-            'category_id' => 'nullable|numeric',
-        ]);
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        
+    }
 
-        if($request->category_id == null ){
-            $this->validate($request, [
-                'name' => 'required|unique:categories|min:5',
-            ]);
-
-            Category::create([
-                'name' => $request->name
-            ]);
-            return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_create_success'));
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        if ($category) {
+            return view('admin.category.edit', compact('category'));
         }else{
-            $find_category = Category::find($request->category_id);
-            if($find_category){
-                $category = Category::where('name', $request->name)
-                                ->first();
-                if($category){
-                    if($category->id == $request->category_id){
-                        $find_category->update([
-                            'name' => $request->name
-                        ]);
-                        return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_create_success'));
-                    }else{
-                        return redirect()->route('category_index')->with('error', \Lang::get('sample.already_exist'));
-                    }          
-                }else{
+            return redirect()->route('category.index')->with('error', \Lang::get('sample.cat_not_found'));
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $find_category = Category::find($id);
+        if($find_category){
+            $category = Category::where('name', $request->name)->first();
+            if($category){
+                if($category->id == $id){
                     $find_category->update([
                         'name' => $request->name
                     ]);
-                    return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_create_success'));
-                }
+                    return redirect()->route('category.index')
+                            ->with('success', \Lang::get('sample.cat_update_success'));
+                }else{
+                    return redirect()->back()
+                            ->with('error', \Lang::get('sample.already_exist'))
+                            ->withInput(Input::all());
+                }          
             }else{
-                return redirect()->route('category_index')->with('error', \Lang::get('sample.cat_not_found'));
+                $find_category->update([
+                    'name' => $request->name
+                ]);
+                return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_update_success'));
             }
-        }
-        
-        
-        
-        dd($category);
-
-        Category::updateOrCreate([
-            'id' => $request->category_id
-        ],[
-            'name' => $request->name
-        ]);
-        return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_create_success'));
+        }else{
+            return redirect()->route('category.edit', $id)->with('error', \Lang::get('sample.cat_not_found'));
+        }   
     }
 
-    public function delete($id){
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
         $category = Category::find($id);
         if ($category) {
             $category->delete();
-            return redirect()->route('category_index')->with('success', \Lang::get('sample.cat_delete_success'));
+            return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_delete_success'));
         }
-        return redirect()->route('category_index')->with('error', \Lang::get('sample.cat_not_found'));
+        return redirect()->route('category.index')->with('error', \Lang::get('sample.cat_not_found'));
     }
 
     public function ajax(Request $request){

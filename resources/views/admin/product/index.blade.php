@@ -13,7 +13,7 @@
             <div class="primary-wrapper">    
             <h4 class="site-title">@lang('sample.products')</h4>
             <hr>  
-            <a href="{{ route('product_create')}}">
+            <a href="{{ route('product.create')}}">
                 <button class="btn btn-primary">@lang('sample.add_new')</button> 
             </a>            
             <br> 
@@ -56,7 +56,7 @@
                                     </td>
                                     <td id="Stringdescription">{{ $product->description}}</td>
                                     <td class="center">
-                                    <a href="{{route('product_edit',[$product->id])}}">
+                                    <a href="{{route('product.edit',[$product->id])}}">
                                         <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
                                     </a>
                                     <button class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>

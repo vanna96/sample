@@ -69,12 +69,14 @@ return [
     'cat_not_found' => 'Whoop!!! this category not found',
     'cat_create_success' => 'Category has create successfully',
     'cat_delete_success' => 'Category has delete successfully',
+    'cat_update_success' => 'Category has update successfully',
 
     // product controller
     
     'pro_not_found' => 'Whoop!!! this product not found.',
     'pro_create_success' => 'Product has create successfully',
     'pro_delete_success' => 'Product has delete successfully.',
+    'pro_update_success' => 'Product has update successfully.',
 
     // language
     'english' => 'English',
