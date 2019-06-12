@@ -83,7 +83,7 @@
     // delete product
     function dataDelete(id){
         var product_id = id;
-        $("#deleteItem").attr("href", "{{url('product/delete')}}/"+product_id);
+        $("#deleteItem").attr("action", "{{url('product/')}}/"+product_id);
     }
 </script>
 @endsection
