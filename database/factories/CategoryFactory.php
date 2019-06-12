@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
-        'name' =>  $faker->unique()->word,
+        'name' =>  $faker->unique()->text($maxNbChars = 25)   ,
     ];
 });

@@ -87,14 +87,14 @@
 @section('script')
 <script src="{{asset('extents/product/script/product_create.js')}}"></script>
 <script>
-// select old value
-var StatusOldValue = '{{ old('status') }}';
-var CategoryOldValue = '{{ old('category') }}';
-if(StatusOldValue !== '') {
-    $('#status_selected').val(StatusOldValue).trigger('change');
-}
-if(CategoryOldValue !== '') {
-    $('#category_selected').val(CategoryOldValue).trigger('change');
-}
+    // select old value
+    var StatusOldValue = '{{ old('status') }}';
+    var CategoryOldValue = '{{ old('category') }}';
+    if(StatusOldValue !== '') {
+        $('#status_selected').val(StatusOldValue).trigger('change');
+    }
+    if(CategoryOldValue !== '') {
+        $('#category_selected').val(CategoryOldValue).trigger('change');
+    }
 </script>
 @endsection

@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreProductPost;
+use App\Mail\ProductMail;
 use Carbon\Carbon;
 use Validator;
 use Mail;
 use Storage;
 use Lang;
+
 
 class ProductController extends Controller
 {
@@ -52,7 +54,7 @@ class ProductController extends Controller
 			$imageName = time().'.'.$request->profile->getClientOriginalExtension();
 			Storage::disk('product')->put($imageName, file_get_contents($request->profile -> getRealPath()));
         }
-        Product::create([
+        $product = Product::create([
 			'name' => $request->name,
 			'price' => $request->price,
 			'status' => $request->status,
@@ -105,6 +107,10 @@ class ProductController extends Controller
      */
     public function update(StoreProductPost $request, $id)
     {
+        $this->validate($request, [
+            'profile' => 'nullable|mimes:jpeg,jpg,png|max:1000',
+        ]);
+
         $find_product = Product::find($id);
         if($find_product){
 

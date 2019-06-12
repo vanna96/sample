@@ -60,7 +60,7 @@
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
                         <select class="form-control @error('status') is-invalid @enderror" title="@lang('sample.status')" name="status" id="status_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
-                            <option value="" disabled selected>@lang('sample.required_select')</option>                            
+                            <option value="" disabled selected>@lang('sample.required_select')</option> 
                             <option value="0" >@lang('sample.draf')</option>
                             <option value="1" >@lang('sample.publish')</option>
                         </select>
@@ -91,14 +91,24 @@
 @section('script')
 <script src="{{asset('extents/product/script/product_create.js')}}"></script>
 <script>
-// select old value
-var StatusOldValue = '{{ old('status') }}';
-var CategoryOldValue = '{{ old('category') }}';
-if(StatusOldValue !== '') {
-    $('#status_selected').val(StatusOldValue).trigger('change');
-}
-if(CategoryOldValue !== '') {
-    $('#category_selected').val(CategoryOldValue).trigger('change');
-}
+    var category_id_selected = $('#category_id_selected').val();
+    var status_id_selected = $('#status_id_selected').val();
+    // select class
+    if(category_id_selected !== ''){
+        $('#category_selected').val(category_id_selected).trigger('change');
+    }
+    if(status_id_selected !== ''){
+        $('#status_selected').val(status_id_selected).trigger('change');
+    }
+
+    // select old value
+    var StatusOldValue = '{{ old('status') }}';
+    var CategoryOldValue = '{{ old('category') }}';
+    if (StatusOldValue !== '') {
+        $('#status_selected').val(StatusOldValue).trigger('change');
+    }
+    if (CategoryOldValue !== '') {
+        $('#category_selected').val(CategoryOldValue).trigger('change');
+    }
 </script>
 @endsection
