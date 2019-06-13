@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreProductPost;
+use App\Http\Requests\UpdateProductPost;
 use App\Mail\ProductMail;
 use Carbon\Carbon;
 use Validator;
@@ -23,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'DESC')->paginate(10);
+        $products = Product::orderBy('name')->paginate(10);
         return view('admin.product.index', compact('products'));
     }
 
@@ -46,10 +47,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductPost $request)
     {
-        $this->validate($request, [
-            'profile' => 'required|mimes:jpeg,jpg,png|max:1000',
-        ]);
-
         if($request->hasFile('profile')) {
 			$imageName = time().'.'.$request->profile->getClientOriginalExtension();
 			Storage::disk('product')->put($imageName, file_get_contents($request->profile -> getRealPath()));
@@ -105,15 +102,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProductPost $request, $id)
+    public function update(UpdateProductPost $request, $id)
     {
-        $this->validate($request, [
-            'profile' => 'nullable|mimes:jpeg,jpg,png|max:1000',
-        ]);
-
         $find_product = Product::find($id);
         if($find_product){
-
             if($request->hasFile('profile')) {
                 $imageName = time().'.'.$request->profile->getClientOriginalExtension();
                 Storage::disk('product')->put($imageName, file_get_contents($request->profile -> getRealPath()));

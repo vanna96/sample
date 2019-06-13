@@ -67,6 +67,7 @@ return [
     'cat_create_success' => 'ប្រភេទបានបង្កើតដោយជោគជ័យ',
     'cat_delete_success' => 'ប្រភេទបានលុបដោយជោគជ័យ',
     'cat_update_success' => 'ប្រភេទ បានធ្វើបច្ចុប្បន្នភាពដោយជោគជ័យ',
+    'cat_was_add_to_product' => 'ប្រភេទមិនអាចលុបបាន។ វាត្រូវបានដាក់ទៅផលិតផល',
 
     // product controller
 

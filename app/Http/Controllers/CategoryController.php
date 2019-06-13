@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Http\Requests\StoreCategory;
+use App\Http\Requests\StoreCategory; 
+use App\Http\Requests\UpdateCategroy;
 use Illuminate\Support\Facades\Input;
 use Response;
 use Lang;
@@ -18,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'DESC')->paginate(10);
+        $categories = Category::orderBy('name')->paginate(10);
         return view('admin.category.index', compact('categories'));
     }
 
@@ -80,29 +81,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategroy $request, $id)
     {
         $find_category = Category::find($id);
         if($find_category){
-            $category = Category::where('name', $request->name)->first();
-            if($category){
-                if($category->id == $id){
-                    $find_category->update([
-                        'name' => $request->name
-                    ]);
-                    return redirect()->route('category.index')
-                            ->with('success', \Lang::get('sample.cat_update_success'));
-                }else{
-                    return redirect()->back()
-                            ->with('error', \Lang::get('sample.already_exist'))
-                            ->withInput(Input::all());
-                }          
-            }else{
-                $find_category->update([
-                    'name' => $request->name
-                ]);
-                return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_update_success'));
-            }
+            $find_category->update([
+                'name' => $request->name
+            ]);
+            return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_update_success'));
         }else{
             return redirect()->route('category.edit', $id)->with('error', \Lang::get('sample.cat_not_found'));
         }   
@@ -118,8 +104,13 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($category) {
-            $category->delete();
-            return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_delete_success'));
+            $have_product = $category->products;
+            if(count($have_product) > 0){
+                return redirect()->route('category.index')->with('error', \Lang::get('sample.cat_was_add_to_product'));
+            }else{
+                $category->delete();
+                return redirect()->route('category.index')->with('success', \Lang::get('sample.cat_delete_success'));
+            }
         }
         return redirect()->route('category.index')->with('error', \Lang::get('sample.cat_not_found'));
     }

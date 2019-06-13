@@ -70,6 +70,7 @@ return [
     'cat_create_success' => 'Category has create successfully',
     'cat_delete_success' => 'Category has delete successfully',
     'cat_update_success' => 'Category has update successfully',
+    'cat_was_add_to_product' => 'Category can not delete. It was add to Product',
 
     // product controller
     
