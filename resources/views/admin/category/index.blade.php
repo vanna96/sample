@@ -37,8 +37,14 @@
                                     <a href="{{route('category.edit',[$category->id])}}">
                                         <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
                                     </a>
-                                    <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
-                                    </td>
+                                    @if(count($category->products) > 0)
+                                        <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)" disabled="true">@lang('sample.delete')</button>
+                                        </td>
+                                    @else
+                                        <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
+                                        </td>
+                                    @endif
+                                    
                                 </tr>   
                             @endforeach
                         @endif                                     

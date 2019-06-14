@@ -123,7 +123,7 @@ class CategoryController extends Controller
             $find = Category::where('name',$request->name)->first();
             if ($find) {
                 $message = 0;
-                return Response::json(['message' => $message, 'data' => null]);
+                return Response::json(['message' => $message, 'data' => $find]);
             }else{
                 $data = Category::create([
                     'name' => $request->name

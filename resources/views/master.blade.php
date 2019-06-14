@@ -101,7 +101,6 @@
                     },
                     dataType: 'json',
                     success: function (response) {
-                        console.log(response);
                         if (response.message == 1) {
                             $('#close_modal').trigger( "click" );
                             $('#categoryModalId').val('');
@@ -143,7 +142,6 @@
                                 icon_type: 'class',
                             });
                         }else if(response.message == 0){
-                            console.log(2);
                             $.notify({
                                 // options
                                 title: "<strong>@lang('sample.whoop')</strong>",
@@ -180,6 +178,8 @@
                                 onClosed: null,
                                 icon_type: 'class',
                             });
+                            $('#category_selected').val(response.data.id).trigger('change');
+                            $('#close_modal').trigger( "click" );
                         }else{
                             $.notify({
                                 // options
