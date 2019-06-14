@@ -6,7 +6,7 @@
 @include('layouts.header') 
     <br> 
     <br>  
-    <div class="container col-sm-6">
+    <div class="container col-sm-8">
         @include('messages.validate_errors')
         @include('messages.massage_alert')
         <div class="banner">
@@ -21,7 +21,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">    
                         <div class="form-group">
                             <label for="category">@lang('sample.name')<span style="color:#a51818">*</span></label>
-                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required value="{{old('name') ? old('name') : $category->name}}"  placeholder="@lang('sample.fill_name')" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name') ? old('name') : $category->name}}"  placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         </div> 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>

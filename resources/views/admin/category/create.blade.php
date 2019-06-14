@@ -6,7 +6,7 @@
 @include('layouts.header') 
     <br> 
     <br>  
-    <div class="container col-sm-6">
+    <div class="container col-sm-8">
         @include('messages.validate_errors')
         <div class="banner">
             <div class="banner-image"></div>
@@ -19,7 +19,7 @@
                     {{csrf_field()}}             
                         <div class="form-group">
                             <label for="category">@lang('sample.name')<span style="color:#a51818">*</span></label>
-                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required value="{{ old('name') }}"  placeholder="@lang('sample.fill_name')" required oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                            <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         </div> 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>
