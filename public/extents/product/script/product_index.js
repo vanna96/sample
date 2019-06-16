@@ -1,5 +1,4 @@
 // remove class active 
-$('.active-link').attr('class', '');
+$('#active_dashboard').attr( "class", "nav-item" );
 // add class active
-$('#active-pro').attr('class', 'classWhite');
-$('#active-pro-list').attr('class', 'classWhite');
+$('#active_product').addClass("nav-item dropdown active");

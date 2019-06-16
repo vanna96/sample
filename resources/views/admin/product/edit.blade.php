@@ -18,13 +18,13 @@
 @include('layouts.header')
     <br> 
     <br>  
-    <div class="container col-sm-8">
+    <div class="container">
         @include('messages.massage_alert')
         @include('messages.validate_errors')
         <div class="banner">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
-            <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
+            <h4 class=""><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
             <hr>
             <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
@@ -69,15 +69,31 @@
                         <label for="status">@lang('sample.profile') 
                             
                         </label>
-                        <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror">
+                        <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror" id="imgInp">
+                        <br>
+                        <?php 
+                            $image = 'http://placehold.it/160x100';
+                            if(file_exists( public_path('storage/products/'). $product->profile)){
+                                $image = $product->profile;
+                                $image = asset('storage/products/'. $image);
+                            }
+                         ?>
+                        <div class="col-xs-4 col-sm-4" style="padding: 0px">
+                            <img id="blah" src="{{$image}}" class="img-responsive img-radio" style="width: 160px; height: 150px">
+                        </div>
                         
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">@lang('sample.description') <span style="color:#a51818">*</span></label>
                         <textarea class="form-control @error('description') is-invalid @enderror" title="@lang('sample.description')" name="description"  cols="30" rows="10" placeholder="@lang('sample.fill_description')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">{{old('description') ? old('description') : $product->description}}</textarea>
                     </div>
-                    <div class="form-group col-sm-12 col-xs-12">
-                        <button type="submit"  class="btn btn-primary pull-right" id="submit">@lang('sample.save') || @lang('sample.update')</button>
+                    <div class="form-group col-sm-12 col-xs-12" >
+                        <div style="float: right;">
+                            <a href="{{route('product.index')}}" class="btn btn-danger">
+                                @lang('sample.cancel')
+                            </a>
+                            <button type="submit"  class="btn btn-primary" id="submit">@lang('sample.save') || @lang('sample.update')</button>
+                        </div>                        
                     </div>
                 </div>
             </form>
@@ -110,5 +126,21 @@
     if (CategoryOldValue !== '') {
         $('#category_selected').val(CategoryOldValue).trigger('change');
     }
+    // image
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
 </script>
 @endsection

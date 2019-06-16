@@ -1,8 +1,7 @@
 $(document).ready(function() {
     // active class
-    $('.active-link').attr('class', '');
-    $('#active-pro').attr('class', 'classWhite');
-    $('#active-pro-create').attr('class', 'classWhite');
+    $('#active_dashboard').attr( "class", "nav-item" );
+    $('#active_product').addClass("nav-item dropdown active");
     // click add category select
     $('.input-group-append').click(function(){
     	$('#CategoryModal').modal('show');

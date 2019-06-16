@@ -6,7 +6,7 @@
 @include('layouts.header') 
     <br> 
     <br>  
-    <div class="container col-sm-8">
+    <div class="container">
         @include('messages.validate_errors')
         @include('messages.massage_alert')
         <div class="banner">
@@ -23,9 +23,13 @@
                             <label for="category">@lang('sample.name')<span style="color:#a51818">*</span></label>
                             <input title="@lang('sample.name')" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name') ? old('name') : $category->name}}"  placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         </div> 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary pull-right">@lang('sample.save') || @lang('sample.update')</button>
-                        </div>                       
+                        <div class="form-group" style="float: right;">
+                            <a href="{{route('category.index')}}" class="btn btn-danger">
+                                @lang('sample.cancel')
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                            @lang('sample.save') || @lang('sample.update')</button>
+                        </div>                      
                     </form>
                 </div>       
             </div>

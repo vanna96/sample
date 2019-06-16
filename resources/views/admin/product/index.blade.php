@@ -6,21 +6,21 @@
 @include('layouts.header') 
     <br> 
     <br>  
-    <div class="container col-sm-8">
+    <div class="container">
         @include('messages.massage_alert')
         <div class="banner">            
             <div class="banner-image"></div> 
             <div class="primary-wrapper">    
-            <h4 class="site-title">@lang('sample.products')</h4>
+            <h4 class="">@lang('sample.products')</h4>
             <hr>  
             <a href="{{ route('product.create')}}">
                 <button class="btn btn-primary">@lang('sample.add_new')</button> 
             </a>            
             <br> 
             <br> 
-            <div style="overflow-x:auto;">
+            <div class="table-responsive">
                 <table class="table table-bordered">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">@lang('sample.profile')</th>
