@@ -21,7 +21,7 @@
     <div class="container">
         @include('messages.massage_alert')
         @include('messages.validate_errors')
-        <div class="banner">
+        <div class="banner shadow p-3 mb-5 bg-white rounded">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
             <h4 class=""><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
@@ -72,7 +72,7 @@
                         <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror" id="imgInp">
                         <br>
                         <?php 
-                            $image = 'http://placehold.it/160x100';
+                            $image = asset('default.png');
                             if(file_exists( public_path('storage/products/'). $product->profile)){
                                 $image = $product->profile;
                                 $image = asset('storage/products/'. $image);

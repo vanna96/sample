@@ -4,7 +4,9 @@
         
         <div class="col-sm-12" style="padding: 0px">
             <nav class="navbar navbar-expand-lg navbar-dark default-color">
-                <a class="navbar-brand" href="{{url('/')}}"><b>@lang('sample.home')</b></a>
+                <a class="navbar-brand" href="{{url('/')}}" style="color:rgba(255,255,255,.5)">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                @lang('sample.home')</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -12,22 +14,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" id="active_dashboard">
-                            <a class="nav-link" href="{{url('/home')}}">@lang('sample.dashboard')</a>
+                            <a class="nav-link" href="{{url('/home')}}">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            @lang('sample.dashboard')</a>
                         </li>
                         <li class="nav-item dropdown" id="active_product">
                           <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-product-hunt" aria-hidden="true"></i>
                             @lang('sample.products')
                           </a>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('product.index') }}">list</a>
-                            <a class="dropdown-item" href="{{ route('product.create') }}">Create</a>
+                            <a class="dropdown-item" href="{{ route('product.index') }}">@lang('sample.list')</a>
+                            <a class="dropdown-item" href="{{ route('product.create') }}">@lang('sample.create')</a>
                           </div>
                         </li>
 
                         <li class="nav-item dropdown" id="active_category">
                           <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-list-alt" aria-hidden="true"></i>
                             @lang('sample.categories')
                           </a>
                           <div class="dropdown-menu">
@@ -66,6 +72,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                 {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

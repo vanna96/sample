@@ -21,7 +21,7 @@
     <div class="container">
         @include('messages.massage_alert')
         @include('messages.validate_errors')
-        <div class="banner">
+        <div class="banner shadow p-3 mb-5 bg-white rounded">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
             <h4 class=""><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
@@ -32,6 +32,7 @@
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="name">@lang('sample.name') <span style="color:#a51818">*</span> </label>
                         <input type="text" title="@lang('sample.name')" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <!-- <span class="text-danger">{{ $errors->first('name') }}</span> -->
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
@@ -69,7 +70,7 @@
                         <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror"  oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')" id="imgInp">
                         <br>
                         <div class="col-xs-4 col-sm-4" style="padding: 0px">
-                            <img id="blah" src="http://placehold.it/160x100" class="img-responsive img-radio" style="width: 160px; height: 150px">
+                            <img id="blah" src="{{asset('default.png')}}" class="img-responsive img-radio" style="width: 160px; height: 150px">
                         </div>
                         
                     </div>

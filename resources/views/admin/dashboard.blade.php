@@ -20,7 +20,7 @@
 <br> 
 <br>  
 <div class="container">
-<div class="banner">
+<div class="banner shadow p-3 mb-5 bg-white rounded">
     <div class="banner-image"></div>
     <div class="primary-wrapper">
         <h4 class="">@lang('sample.welcome_to_dashboard')</h4>

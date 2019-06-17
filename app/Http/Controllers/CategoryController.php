@@ -116,7 +116,7 @@ class CategoryController extends Controller
     }
 
     public function ajax(Request $request){
-        if(strlen($request->name) > 25 || strlen($request->name) < 5){
+        if(strlen($request->name) > 25){
             $message = 2;
             return Response::json(['message' => $message, 'data' => null]);
         }else{

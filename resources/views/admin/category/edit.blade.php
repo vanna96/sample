@@ -9,7 +9,7 @@
     <div class="container">
         @include('messages.validate_errors')
         @include('messages.massage_alert')
-        <div class="banner">
+        <div class="banner shadow p-3 mb-5 bg-white rounded">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
             <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.category')</h4>

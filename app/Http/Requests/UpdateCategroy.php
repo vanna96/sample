@@ -29,7 +29,7 @@ class UpdateCategroy extends FormRequest
     {
         $id = $this->route()->parameters['category'] ?? null;
         return [
-            'name' => 'required|min:5|max:25|unique:categories,name,'. $id,
+            'name' => 'required|max:25|unique:categories,name,'. $id,
         ];
     }
 }

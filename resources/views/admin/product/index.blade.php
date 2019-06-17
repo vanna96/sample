@@ -8,10 +8,10 @@
     <br>  
     <div class="container">
         @include('messages.massage_alert')
-        <div class="banner">            
+        <div class="banner shadow p-3 mb-5 bg-white rounded">            
             <div class="banner-image"></div> 
             <div class="primary-wrapper">    
-            <h4 class="">@lang('sample.products')</h4>
+            <h4 class=""><i class="fa fa-product-hunt" aria-hidden="true"></i>  @lang('sample.products')</h4>
             <hr>  
             <a href="{{ route('product.create')}}">
                 <button class="btn btn-primary">@lang('sample.add_new')</button> 
