@@ -5,7 +5,7 @@
 .center{
     text-align:center;
 }
-img{
+.indexImg{
     width: 50px;
     height: 38px;
     border-radius: 4px;
@@ -24,4 +24,13 @@ img{
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 50px;
+}
+.pagination a {
+    line-height: 17px !important;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #ff9900;
+    border-color: #ff9900;
 }

@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="shortcut icon" href="{{asset('logo1.png')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('/extents/links/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/extents/links/css/animate.min.css')}}">
@@ -13,6 +13,7 @@
 
     <!-- select2-bootstrap4-theme -->
     <link href="{{asset('/extents/links/css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('new/css/main.css')}}">
     <title>Sample</title>
     <link rel="stylesheet" href="{{asset('extents/style.css')}}">
     @if (App::isLocale('en'))
@@ -29,14 +30,19 @@
   </head>
   <body>
     @yield('content')
-
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="{{asset('new/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <script src="{{asset('extents/links/script/jquery.min.js')}}"></script>
     <script src="{{asset('extents/links/script/popper.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap-notify.min.js')}}"></script>
+    <script src="{{asset('new/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{asset('new/js/jquery.sticky.js')}}"></script>
+    <script src="{{asset('new/js/nouislider.min.js')}}"></script>
+    <script src="{{asset('new/js/jquery.magnific-popup.min.js')}}"></script>    
     <script src="{{asset('extents/links/script/select2.min.js')}}"></script>
+    <script src="{{asset('new/js/main.js')}}"></script>
     <script>
         $(".alert-success").delay(4000).slideUp('slow');
         $(".danger_slideup").delay(4000).slideUp('slow');

@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // return view('home');
         $products = Product::where('status', 1)->get();
         $categories = Category::all();
         return view('admin.dashboard', compact('categories', 'products'));

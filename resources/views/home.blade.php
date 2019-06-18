@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html>
 
 <head>
 	<!-- Mobile Specific Meta -->
@@ -19,29 +19,23 @@
 	<!--
 		CSS
 		============================================= -->
-	<link rel="stylesheet" href="{{asset('new/css/linearicons.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/font-awesome.min.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/themify-icons.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/bootstrap.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/owl.carousel.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/nice-select.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/nouislider.min.css')}}">
-	<link rel="stylesheet" href="{{asset('new/css/ion.rangeSlider.css')}}" />
-	<link rel="stylesheet" href="{{asset('new/css/ion.rangeSlider.skinFlat.css')}}" />
-	<link rel="stylesheet" href="{{asset('new/css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('new/css/main.css')}}">
-    <script src="{{asset('extents/links/script/db552c2642.js')}}"></script>
+	<link rel="stylesheet" href="{{ asset('new/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ asset('new/css/main.css') }}">
+    <style type="text/css">
+    	.nav-link{
+		    font-size: 18px !important;
+    	}
+    </style>
 </head>
 
 <body>
-
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{{ url('/')}}"><img src="{{ asset('logo.png') }}" alt=""></a>
+					<a class="navbar-brand logo_h" href="{{ url('/')}}"><img src="{{ asset('logo1.png') }}" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -115,28 +109,500 @@
     <br>
     <br>
     <br>
-	<section class="banner-area">
-		<div class="container">
-			
-		</div>
-	</section>
-	<!-- End banner Area -->
-
-	<script src=" {{ asset('new/js/vendor/jquery-2.2.4.min.js') }} "></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src=" {{ asset('new/js/vendor/bootstrap.min.js') }} "></script>
-	<script src=" {{ asset('new/js/jquery.ajaxchimp.min.js') }} "></script>
-	<script src=" {{ asset('new/js/jquery.nice-select.min.js') }} "></script>
-	<script src=" {{ asset('new/js/jquery.sticky.js') }} "></script>
-	<script src=" {{ asset('new/js/nouislider.min.js') }} "></script>
-	<script src=" {{ asset('new/js/countdown.js') }} "></script>
-	<script src=" {{ asset('new/js/jquery.magnific-popup.min.js') }} "></script>
-	<script src=" {{ asset('new/js/owl.carousel.min.js') }} "></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="{{ asset('new/js/gmaps.min.js') }}"></script>
-	<script src="{{ asset('new/js/main.js') }}"></script>
+    <div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<div class="container">
+	  	<div class="row">
+		    <div class="col-sm-12">
+		      	<div class="row">	
+					<div class="form-group col-sm-6 col-xs-6" >
+	                    <div class="card">
+	                        <div class="card-body" style="background-color:#f39c12;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        SADFF
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-product-hunt" aria-hidden="true" style="font-size: 90px;"></i>
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('product.index' )}}#" class="btn btn-default">@lang('sample.more_info') 
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="form-group col-sm-6 col-xs-6">
+	                    <div class="card" style="width:100%">
+	                        <div class="card-body" style="background-color:#328c4a;
+	                            color:white;">
+	                            <div class="row">
+	                                <div class="col-sm-7 col-xs-7">
+	                                    <center>
+	                                        ASD                           
+	                                    </center>
+	                                </div>
+	                                <div class="col-sm-5 col-xs-5">
+	                                    <center>
+	                                        <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 90px;"></i>   
+	                                    </center>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer" style="background-color: #d0c8c854">
+	                            <center>
+	                                <a href="{{ route('category.index' )}}" class="btn btn-default">@lang('sample.more_info')
+	                                <i class="fa fa-arrow-right"></i>
+	                                </a>
+	                                </a>
+	                            </center>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		    </div>
+	  	</div>
+	</div>
+	<script src="{{asset('new/js/vendor/jquery-2.2.4.min.js')}}"></script>
+	<script src="{{asset('new/js/jquery.nice-select.min.js')}}"></script>
+	<script src="{{asset('new/js/jquery.sticky.js')}}"></script>
+	<script src="{{asset('new/js/nouislider.min.js')}}"></script>
+	<script src="{{asset('new/js/jquery.magnific-popup.min.js')}}"></script>
+	<script src="{{asset('new/js/main.js')}}"></script>
 </body>
 
 </html>

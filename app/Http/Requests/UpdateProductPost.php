@@ -26,9 +26,10 @@ class UpdateProductPost extends FormRequest
      * @return array
      */
     public function rules()
-    {        
+    {     
+        $id = $this->route()->parameters['product'] ?? null; 
         return [
-            'name' => 'required|max:50',
+            'name' => 'required|max:50|unique:products,name,'. $id,
             'price' => 'required|numeric|min:0|max:999999',
             'status' => 'required|numeric|between:0,1',
             'description' => 'required|min:3|max:1000',

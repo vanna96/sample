@@ -40,7 +40,7 @@
                                     <td style="text-align: center;">
                                     @if(file_exists( public_path('storage/products/'). $product->profile))
                                     <a href="{{asset('storage/products/'.$product->profile)}}" target="_blank">
-                                        <img src="{{asset('storage/products/'.$product->profile)}}" alt="">
+                                        <img src="{{asset('storage/products/'.$product->profile)}}" alt="" class="indexImg">
                                     </a>                                        
                                     @else
                                     @endif
