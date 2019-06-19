@@ -107,6 +107,7 @@
 @section('script')
 <script src="{{asset('extents/product/script/product_create.js')}}"></script>
 <script>
+    $("#product-list").addClass('active');
     var category_id_selected = $('#category_id_selected').val();
     var status_id_selected = $('#status_id_selected').val();
     // select class
@@ -138,7 +139,6 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $("#imgInp").change(function(){
         readURL(this);
     });

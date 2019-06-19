@@ -64,6 +64,7 @@
 @section('script')
 <script src="{{asset('extents/category/script/category_index.js')}}"></script>
 <script>
+    $("#category-list").addClass('active');
     // delete category
     function dataDelete(id){
         var category_id = id;

@@ -26,8 +26,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="{{url('/home')}}"><i class="fa fa-tachometer" aria-hidden="true"></i> @lang('sample.dashboard')</a></li>
-                        <li class="nav-item submenu dropdown">
+                        <li class="nav-item" id="dashboard-list"><a class="nav-link" href="{{url('/home')}}"><i class="fa fa-tachometer" aria-hidden="true"></i> @lang('sample.dashboard')</a></li>
+                        <li class="nav-item submenu dropdown" id="product-list">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                              aria-expanded="false"><i class="fa fa-product-hunt" aria-hidden="true"></i> @lang('sample.products')</a>
                             <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
                                 <li class="nav-item"><a class="nav-link" href="{{ route('product.create') }}">@lang('sample.create')</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item submenu dropdown">
+                        <li class="nav-item submenu dropdown" id="category-list">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                              aria-expanded="false"> <i class="fa fa-list-alt" aria-hidden="true"></i> @lang('sample.categories')</a>
                             <ul class="dropdown-menu">

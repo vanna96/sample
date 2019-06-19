@@ -111,6 +111,7 @@
 @endsection
 @section('script')
 <script>
+    $("#dashboard-list").addClass('active');
     $("#save_change").click(function() {
           var category_name = $('#category_name').val();
           if(category_name == '' || category_name.trim() == ''){

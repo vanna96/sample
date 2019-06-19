@@ -37,4 +37,7 @@
 @endsection
 @section('script')
 <script src="{{asset('extents/category/script/category_create.js')}}"></script>
+<script>
+    $("#category-list").addClass('active');
+</script>
 @endsection

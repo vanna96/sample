@@ -98,6 +98,7 @@
 @section('script')
 <script src="{{asset('extents/product/script/product_create.js')}}"></script>
 <script>
+    $("#product-list").addClass('active');
     // select old value
     var StatusOldValue = '{{ old('status') }}';
     var CategoryOldValue = '{{ old('category') }}';

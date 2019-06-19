@@ -81,6 +81,7 @@
 @section('script')
 <script src="{{asset('extents/product/script/product_index.js')}}"></script>
 <script>
+    $("#product-list").addClass('active');
     // delete product
     function dataDelete(id){
         var product_id = id;
