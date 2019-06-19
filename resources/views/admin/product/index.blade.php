@@ -11,7 +11,7 @@
         <div class="banner shadow p-3 mb-5 bg-white rounded">            
             <div class="banner-image"></div> 
             <div class="primary-wrapper">    
-            <h4 class=""><i class="fa fa-product-hunt" aria-hidden="true"></i>  @lang('sample.products')</h4>
+            <h3 class=""><i class="fa fa-product-hunt" aria-hidden="true"></i> @lang('sample.products')</h3>
             <hr>  
             <a href="{{ route('product.create')}}">
                 <button class="btn btn-primary">@lang('sample.add_new')</button> 
@@ -45,9 +45,9 @@
                                     @else
                                     @endif
                                     </td>
-                                    <td>{{ $product->name }}</td>
+                                    <td id="Stringname">{{ $product->name }}</td>
                                     <td>${{ $product->price }}</td>
-                                    <td>{{ !empty($product->category)?$product->category->name:'' }}</td>
+                                    <td id="Stringcategory">{{ !empty($product->category)?$product->category->name:'' }}</td>
                                     <td style="text-align:center">
                                         @if($product->status == 0)
                                             <i class="fa fa-times" rel="@lang('sample.draf')" style="color:#ab1515; font-size: 20px;" ></i>
@@ -56,11 +56,11 @@
                                         @endif
                                     </td>
                                     <td id="Stringdescription">{{ $product->description}}</td>
-                                    <td class="center">
-                                    <a href="{{route('product.edit',[$product->id])}}">
-                                        <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
-                                    </a>
-                                    <button class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
+                                    <td class="center" style="padding:10px">
+                                        <a  class="btn btn-default" style="background-color:#ada8a896; margin:2px" href="{{route('product.edit',[$product->id])}}" >
+                                            @lang('sample.edit')
+                                        </a>
+                                        <a style="margin:2px" class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</a>
                                     </td>
                                 </tr>   
                             @endforeach
@@ -70,6 +70,8 @@
             </div>
             @if(isset($products) && count($products) > 0)
                 {{ $products->links() }}  
+            @else
+                <center><h5>@lang('sample.no_data')</h5></center>
             @endif                
         </div>
     </div>
@@ -79,7 +81,6 @@
     </div>
 @endsection
 @section('script')
-<script src="{{asset('extents/product/script/product_index.js')}}"></script>
 <script>
     $("#product-list").addClass('active');
     // delete product

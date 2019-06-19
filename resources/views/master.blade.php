@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{{asset('logo1.png')}}">
+    <link rel="shortcut icon" href="{{asset('logo01.png')}}">
+    <title>Sample</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('/extents/links/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/extents/links/css/animate.min.css')}}">
@@ -14,8 +15,6 @@
     <!-- select2-bootstrap4-theme -->
     <link href="{{asset('/extents/links/css/select2-bootstrap4.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('new/css/main.css')}}">
-    <title>Sample</title>
-    <link rel="stylesheet" href="{{asset('extents/style.css')}}">
     @if (App::isLocale('en'))
     @else
       <style type="text/css">
@@ -44,8 +43,6 @@
     <script src="{{asset('extents/links/script/select2.min.js')}}"></script>
     <script src="{{asset('new/js/main.js')}}"></script>
     <script>
-        $(".alert-success").delay(4000).slideUp('slow');
-        $(".danger_slideup").delay(4000).slideUp('slow');
         $('select').each(function () {
             $(this).select2({
                 theme: 'bootstrap4',
@@ -229,6 +226,6 @@
             }
         });
     </script>
-    @yield('script')
+    @stack('script')
   </body>
 </html>

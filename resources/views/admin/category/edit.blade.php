@@ -1,6 +1,5 @@
 @extends('master')
 @section('style')
-    <link rel="stylesheet" href="{{asset('extents/product/css/product_index.css')}}">
 @endsection
 @section('content')
 @include('layouts.header') 
@@ -12,7 +11,7 @@
         <div class="banner shadow p-3 mb-5 bg-white rounded">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
-            <h4 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.category')</h4>
+            <h3 class="site-title"><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.category')</h3>
             <hr>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
@@ -38,7 +37,6 @@
     </div>
 @endsection
 @section('script')
-<script src="{{asset('extents/category/script/category_create.js')}}"></script>
 <script>
     $("#category-list").addClass('active');
 </script>

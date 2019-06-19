@@ -11,7 +11,7 @@
         <div class="banner shadow p-3 mb-5 bg-white rounded">            
             <div class="banner-image"></div> 
             <div class="primary-wrapper">    
-            <h4 class=""><i class="fa fa-list-alt" aria-hidden="true"></i> @lang('sample.categories')</h4>
+            <h3 class=""><i class="fa fa-list-alt" aria-hidden="true"></i> @lang('sample.categories')</h3>
             <hr>  
             <a href="{{ route('category.create')}}">
                 <button class="btn btn-primary">@lang('sample.add_new')</button> 
@@ -22,9 +22,9 @@
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                         <tr>
-                        <th scope="col">#</th>
+                        <th scope="col" style="width:5%">#</th>
                         <th scope="col">@lang('sample.name')</th>
-                        <th scope="col" style="width:40%">@lang('sample.action')</th>
+                        <th scope="col" style="width:30%">@lang('sample.action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,14 +34,14 @@
                                     <th scope="row">{{$key + 1}}</th>                                
                                     <td>{{ $category->name }}</td>
                                     <td class="center">
-                                    <a href="{{route('category.edit',[$category->id])}}">
-                                        <button class="btn btn-default" style="background-color:#ada8a896">@lang('sample.edit')</button>
+                                    <a class="btn btn-default" href="{{route('category.edit',[$category->id])}}" style="background-color:#ada8a896; margin:2px">
+                                        @lang('sample.edit')
                                     </a>
                                     @if(count($category->products) > 0)
-                                        <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)" disabled="true">@lang('sample.delete')</button>
+                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)" disabled="true" style="margin:2px">@lang('sample.delete')</a>
                                         </td>
                                     @else
-                                        <button class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</button>
+                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)" style="margin:2px">@lang('sample.delete')</a>
                                         </td>
                                     @endif
                                     
@@ -53,7 +53,9 @@
             </div>
             @if(isset($categories) && count($categories) > 0)
                 {{ $categories->links() }}  
-            @endif                
+            @else
+                <center><h5>@lang('sample.no_data')</h5></center>
+            @endif                  
         </div>
     </div>
     <!-- DeleteModal -->
@@ -62,7 +64,6 @@
     </div>
 @endsection
 @section('script')
-<script src="{{asset('extents/category/script/category_index.js')}}"></script>
 <script>
     $("#category-list").addClass('active');
     // delete category

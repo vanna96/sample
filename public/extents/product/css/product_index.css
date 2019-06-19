@@ -19,12 +19,6 @@
     position:absolute;
     white-space:nowrap;
 }
-#Stringdescription{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 50px;
-}
 .pagination a {
     line-height: 17px !important;
 }
@@ -33,4 +27,11 @@
     color: #fff;
     background-color: #ff9900;
     border-color: #ff9900;
+}
+
+#Stringname, #Stringdescription, #Stringcategory{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50px;
 }

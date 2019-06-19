@@ -83,6 +83,7 @@ return [
     'english' => 'English',
     'khmer' => 'Khmer',
     'error' => 'Error',
-    'len' => 'Category must be between 5 and 25 characters.',
-    'cancel' => 'Cancel'
+    'len' => 'Category must less than 25 characters.',
+    'cancel' => 'Cancel',
+    'no_data' => 'No data available in table',
 ];

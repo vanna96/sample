@@ -1,7 +1,15 @@
 @extends('master')
 @section('style')
-<link rel="stylesheet" href="{{asset('extents/product/css/product_create.css')}}">
 <style>
+    .site-title{
+        color: blue
+    }
+    span{
+        font-size:22px;
+    }
+    .inline{
+        display:inline-block;
+    }
     .select2-container--bootstrap4 .select2-selection {
         height: 39px !important;
         font-size: 18px;
@@ -11,6 +19,11 @@
     }
     .select2-results__option {
         font-size: 16px;
+    }
+    @media only screen and (max-width: 320px) {
+        .input-group {
+            display: -webkit-box !important;
+        }
     }
 </style>
 @endsection
@@ -24,7 +37,7 @@
         <div class="banner shadow p-3 mb-5 bg-white rounded">
             <div class="banner-image"></div>
             <div class="primary-wrapper">
-            <h4 class=""><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h4>
+            <h3 class=""><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h3>
             <hr>
             <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
@@ -52,7 +65,8 @@
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">@lang('sample.price') <span style="color:#a51818">*</span></label>
-                        <input type="number" title="@lang('sample.price')" class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                        <input type="number" title="@lang('sample.price')" onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                        class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
@@ -96,7 +110,6 @@
     </div>
 @endsection
 @section('script')
-<script src="{{asset('extents/product/script/product_create.js')}}"></script>
 <script>
     $("#product-list").addClass('active');
     // select old value
@@ -108,21 +121,5 @@
     if(CategoryOldValue !== '') {
         $('#category_selected').val(CategoryOldValue).trigger('change');
     }
-    // image
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
 </script>
 @endsection
