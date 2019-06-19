@@ -38,10 +38,10 @@
                                         @lang('sample.edit')
                                     </a>
                                     @if(count($category->products) > 0)
-                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)" disabled="true" style="margin:2px">@lang('sample.delete')</a>
+                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDeleteCategory(this.id)" disabled="true" style="margin:2px">@lang('sample.delete')</a>
                                         </td>
                                     @else
-                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)" style="margin:2px">@lang('sample.delete')</a>
+                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDeleteCategory(this.id)" style="margin:2px">@lang('sample.delete')</a>
                                         </td>
                                     @endif
                                     
@@ -66,10 +66,5 @@
 @section('script')
 <script>
     $("#category-list").addClass('active');
-    // delete category
-    function dataDelete(id){
-        var category_id = id;
-        $("#deleteItem").attr("action", "{{url('category/')}}/"+category_id);
-    }
 </script>
 @endsection

@@ -60,7 +60,7 @@
                                         <a  class="btn btn-default" style="background-color:#ada8a896; margin:2px" href="{{route('product.edit',[$product->id])}}" >
                                             @lang('sample.edit')
                                         </a>
-                                        <a style="margin:2px" class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDelete(this.id)">@lang('sample.delete')</a>
+                                        <a style="margin:2px" class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDeleteProduct(this.id)">@lang('sample.delete')</a>
                                     </td>
                                 </tr>   
                             @endforeach
@@ -83,10 +83,5 @@
 @section('script')
 <script>
     $("#product-list").addClass('active');
-    // delete product
-    function dataDelete(id){
-        var product_id = id;
-        $("#deleteItem").attr("action", "{{url('product/')}}/"+product_id);
-    }
 </script>
 @endsection

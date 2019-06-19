@@ -32,7 +32,7 @@
     <!-- Optional JavaScript -->
 
     <script src="{{asset('new/js/vendor/jquery-2.2.4.min.js')}}"></script>
-    <script src="{{asset('extents/links/script/jquery.min.js')}}"></script>
+    <!-- <script src="{{asset('extents/links/script/jquery.min.js')}}"></script> -->
     <script src="{{asset('extents/links/script/popper.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap-notify.min.js')}}"></script>
@@ -52,6 +52,16 @@
                 allowClear: Boolean($(this).data('allow-clear')),
             });
         });
+        // delete product
+        function dataDeleteProduct(id){
+            var product_id = id;
+            $("#deleteItem").attr("action", "{{url('product/')}}/"+product_id);
+        }
+        // delete category
+        function dataDeleteCategory(id){
+            var category_id = id;
+            $("#deleteItem").attr("action", "{{url('category/')}}/"+category_id);
+        }
         // save change click modal
         $('#save_change').click(function(){
             var categoryModalvalue = $('#categoryModalId').val();
