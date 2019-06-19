@@ -236,6 +236,6 @@
             }
         });
     </script>
-    @stack('script')
+    @yield('script')
   </body>
 </html>
