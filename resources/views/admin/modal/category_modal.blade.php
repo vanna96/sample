@@ -10,7 +10,7 @@
             <div class="col-sm-12 col-xs-12">    
                 <div class="form-group">
                     <label for="name">@lang('sample.name')</label>
-                    <input type="text" name="name" id="categoryModalId" class="form-control" placeholder="@lang('sample.name')" required>
+                    <input type="text" name="name" id="categoryModalId" :autofocus = "autofocus" class="form-control" placeholder="@lang('sample.name')" required>
                 </div> 
             </div>
         </div>

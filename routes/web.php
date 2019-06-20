@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'authLog']], function () {
     //Category
-    Route::resource('category', 'CategoryController');    
+    Route::resource('category', 'CategoryController')->except('show');    
     Route::post('category/ajax', 'CategoryController@ajax')->name('ajax');
 
     // product   

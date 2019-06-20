@@ -57,7 +57,7 @@
                                 @endif
                             </select>
                             <div class="input-group-append">
-                                <a style="background-color: #e8e4e4; width: 36px;"><center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center></a>
+                                <a data-toggle="modal" data-target="#CategoryModal" style="background-color: #e8e4e4; width: 36px;"><center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center></a>
                             </div>
                         </div>
                     </div>                    

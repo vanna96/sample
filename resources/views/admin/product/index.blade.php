@@ -28,7 +28,6 @@
                         <th scope="col">@lang('sample.price')</th>                    
                         <th scope="col">@lang('sample.category')</th>
                         <th scope="col">@lang('sample.status')</th>
-                        <th scope="col">@lang('sample.description')</th>
                         <th scope="col">@lang('sample.action')</th>
                         </tr>
                     </thead>
@@ -37,7 +36,7 @@
                             @foreach($products as $key=>$product)
                                 <tr>
                                     <th scope="row">{{$key + 1}}</th>
-                                    <td style="text-align: center;">
+                                    <td>
                                     @if(file_exists( public_path('storage/products/'). $product->profile))
                                     <a href="{{asset('storage/products/'.$product->profile)}}" target="_blank">
                                         <img src="{{asset('storage/products/'.$product->profile)}}" alt="" class="indexImg">
@@ -45,9 +44,9 @@
                                     @else
                                     @endif
                                     </td>
-                                    <td id="Stringname">{{ $product->name }}</td>
-                                    <td>${{ $product->price }}</td>
-                                    <td id="Stringcategory">{{ !empty($product->category)?$product->category->name:'' }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td style="text-align: center;">${{ number_format($product->price, 2, '.', ',') }}</td>
+                                    <td>{{ !empty($product->category)?$product->category->name:'' }}</td>
                                     <td style="text-align:center">
                                         @if($product->status == 0)
                                             <i class="fa fa-times" rel="@lang('sample.draf')" style="color:#ab1515; font-size: 20px;" ></i>
@@ -55,12 +54,11 @@
                                             <i class="fa fa-paper-plane-o" style="color:#111173; font-size: 20px;" rel="@lang('sample.publish')"></i>
                                         @endif
                                     </td>
-                                    <td id="Stringdescription">{{ $product->description}}</td>
-                                    <td class="center" style="padding:10px">
+                                    <td style="padding:10px; color: white;">
                                         <a  class="btn btn-default" style="background-color:#ada8a896; margin:2px" href="{{route('product.edit',[$product->id])}}" >
                                             @lang('sample.edit')
                                         </a>
-                                        <a style="margin:2px" class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDeleteProduct(this.id)">@lang('sample.delete')</a>
+                                        <a style="margin:2px" class="btn btn-danger" data-toggle="modal" id = "{{$product->id}}" data-target="#DeleteModal" onclick="dataDeleteProduct(this.id)">@lang('sample.delete')</a> 
                                     </td>
                                 </tr>   
                             @endforeach
@@ -68,11 +66,15 @@
                     </tbody>
                 </table> 
             </div>
-            @if(isset($products) && count($products) > 0)
-                {{ $products->links() }}  
-            @else
-                <center><h5>@lang('sample.no_data')</h5></center>
-            @endif                
+            <nav aria-label="Page navigation example" class="table-responsive mb-2">
+                <ul class="pagination mb-0">
+                    @if(isset($products) && count($products) > 0)
+                        {{ $products->links() }}  
+                    @else
+                        <center><h5>@lang('sample.no_data')</h5></center>
+                    @endif    
+                </ul>
+            </nav>                           
         </div>
     </div>
     <!-- DeleteModal -->

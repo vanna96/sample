@@ -50,7 +50,7 @@
                     <div class="form-group col-sm-6 col-xs-6">                        
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
                         <div class="input-group">
-                            <select class="form-control @error('category') is-invalid @enderror" title="@lang('sample.category')" name="category" id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
+                            <select class="form-control category_selected @error('category') is-invalid @enderror" title="@lang('sample.category')" name="category" id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')" style="width:10%;">
                                 <option value="" disabled selected>@lang('sample.required_select')</option>
                                 @if(isset($categories) && count($categories) > 0)
                                     @foreach($categories as $category)
@@ -59,13 +59,13 @@
                                 @endif
                             </select>
                             <div class="input-group-append">
-                                <a style="background-color: #e8e4e4; width: 36px;"><center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center></a>
+                                <a data-toggle="modal" data-target="#CategoryModal" style="background-color: #e8e4e4; width: 36px;"><center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center></a>
                             </div>
                         </div>
                     </div>                    
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">@lang('sample.price') <span style="color:#a51818">*</span></label>
-                        <input type="number" title="@lang('sample.price')" onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                        <input type="number" title="@lang('sample.price')" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 189 ? false : true"
                         class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
@@ -104,7 +104,7 @@
             </form>
         </div>
     </div>
-    <!-- ProductModal -->
+    <!-- CategoryModal -->
     <div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="CategoryModalLabel" aria-hidden="true">
         @include('admin.modal.category_modal')
     </div>

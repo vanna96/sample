@@ -33,7 +33,7 @@ class StoreProductPost extends FormRequest
             'status' => 'required|numeric|between:0,1',
             'description' => 'required|max:1000',
             'category' => 'required|numeric|exists:categories,id',
-            'profile' => 'required|mimes:jpeg,jpg,png|max:2000',
+            'profile' => 'nullable|mimes:jpeg,jpg,png|max:2000',
         ];
     }
 

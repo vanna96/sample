@@ -33,29 +33,34 @@
                                 <tr>
                                     <th scope="row">{{$key + 1}}</th>                                
                                     <td>{{ $category->name }}</td>
-                                    <td class="center">
+                                    <td class="center" style="color:white">
                                     <a class="btn btn-default" href="{{route('category.edit',[$category->id])}}" style="background-color:#ada8a896; margin:2px">
                                         @lang('sample.edit')
                                     </a>
                                     @if(count($category->products) > 0)
-                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDeleteCategory(this.id)" disabled="true" style="margin:2px">@lang('sample.delete')</a>
-                                        </td>
+                                        <!-- <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDeleteCategory(this.id)"  style="margin:2px">@lang('sample.delete')</a> -->
+                                        <button class="btn btn-danger" style="margin:2px" disabled="true">
+                                            @lang('sample.delete')
+                                        </button>                                        
                                     @else
-                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDeleteCategory(this.id)" style="margin:2px">@lang('sample.delete')</a>
-                                        </td>
+                                        <a class="btn btn-danger" data-toggle="modal" id = "{{$category->id}}" data-target="#DeleteModal" onclick="dataDeleteCategory(this.id)" style="margin:2px">@lang('sample.delete')</a>                                  
                                     @endif
-                                    
+                                    </td>
                                 </tr>   
                             @endforeach
                         @endif                                     
                     </tbody>
                 </table>
             </div>
-            @if(isset($categories) && count($categories) > 0)
-                {{ $categories->links() }}  
-            @else
-                <center><h5>@lang('sample.no_data')</h5></center>
-            @endif                  
+            <nav aria-label="Page navigation example" class="table-responsive mb-2">
+                <ul class="pagination mb-0">
+                    @if(isset($categories) && count($categories) > 0)
+                        {{ $categories->links() }}  
+                    @else
+                        <center><h5>@lang('sample.no_data')</h5></center>
+                    @endif   
+                </ul>
+            </nav>                           
         </div>
     </div>
     <!-- DeleteModal -->

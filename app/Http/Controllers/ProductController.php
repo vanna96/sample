@@ -48,14 +48,13 @@ class ProductController extends Controller
     public function store(StoreProductPost $request)
     {
         if($request->hasFile('profile')) {
-			$imageName = time().'.'.$request->profile->getClientOriginalExtension();
-			Storage::disk('product')->put($imageName, file_get_contents($request->profile -> getRealPath()));
+			$imageName = $this->StoreImage($request->profile);
         }
         $product = Product::create([
 			'name' => $request->name,
 			'price' => $request->price,
 			'status' => $request->status,
-			'profile' => !empty($imageName)?$imageName:'',
+			'profile' => !empty($imageName)?$imageName:' ',
 			'category_id' => $request->category,	
 			'description' => $request->description
         ]);
@@ -107,12 +106,9 @@ class ProductController extends Controller
         $find_product = Product::find($id);
         if($find_product){
             if($request->hasFile('profile')) {
-                $imageName = time().'.'.$request->profile->getClientOriginalExtension();
-                Storage::disk('product')->put($imageName, file_get_contents($request->profile -> getRealPath()));
+                $imageName = $this->StoreImage($request->profile);
             }
-
             $oldProfile = $find_product->profile;
-
             $find_product->update([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -124,9 +120,7 @@ class ProductController extends Controller
 
             // delete old file
             if(@$imageName){
-                if(file_exists( public_path('storage/products/'). $oldProfile)){
-                    Storage::disk('product')->delete($oldProfile);
-                }		
+                $this->DeleteImage($oldProfile);		
             }           
             return redirect()->route('product.index')->with('success', \Lang::get('sample.pro_update_success'));
 
@@ -147,11 +141,21 @@ class ProductController extends Controller
 		if ($product) {
 			$image = $product->profile;
 			$product->delete();
-			if(file_exists( public_path('storage/products/'). $image)){
-				Storage::disk('product')->delete($image);
-			}
+			$this->DeleteImage($image);
 			return redirect()->route('product.index')->with('success', \Lang::get('sample.pro_delete_success'));
 		}
 		return redirect()->route('product.index')->with('error', \Lang::get('sample.pro_not_found'));
+    }
+
+    private function StoreImage($image){
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        Storage::disk('product')->put($imageName, file_get_contents($image -> getRealPath()));
+        return $imageName;
+    }
+
+    private function DeleteImage($image){
+        if(file_exists( public_path('storage/products/'). $image)){
+            Storage::disk('product')->delete($image);
+        }
     }
 }

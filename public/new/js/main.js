@@ -265,8 +265,16 @@ $(document).ready(function(){
     });
 
     // modal pencil create category
-    $('.input-group-append').click(function(){
-    	$('#CategoryModal').modal('show');
+    $('#CategoryModal').on('shown.bs.modal', function () {
+        $('#categoryModalId').focus();
     });
+
+    
+
+
+
+    // $('.input-group-append').click(function(){
+    // 	$('#CategoryModal').modal('show');
+    // });
 
  });
