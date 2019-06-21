@@ -81,7 +81,6 @@
                         </label>
                         <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror"  oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')" id="imgInp">
                         <input type="hidden" id="b64" name="b64" value="{{ old('b64') }}">
-                        <!-- <input type="hidden" id="b64_preview" name="b64_preview" > -->
                         <br>
                         <div class="col-xs-4 col-sm-4" style="padding: 0px">
                             <img id="blah" src="{{ old('b64') ? old('b64'): asset('images/default.png')}}" class="img-responsive img-radio" style="width: 160px; height: 150px">
