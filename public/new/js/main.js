@@ -247,31 +247,28 @@ $(document).ready(function(){
     $(".alert-success").delay(4000).slideUp('slow');
     $(".danger_slideup").delay(4000).slideUp('slow');
 
-    // read image upload
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
+    function readFile() {
+  
+      if (this.files && this.files[0]) {
+        
+        var FR= new FileReader();
+        
+        FR.addEventListener("load", function(e) {
+          document.getElementById("blah").src       = e.target.result;
+          document.getElementById("b64").value = e.target.result;       
+        }); 
+        
+        FR.readAsDataURL( this.files[0] );
+      }
+      
     }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
+    
+    document.getElementById("imgInp").addEventListener("change", readFile);
 
     // modal pencil create category
     $('#CategoryModal').on('shown.bs.modal', function () {
         $('#categoryModalId').focus();
     });
-
-    
-
-
 
     // $('.input-group-append').click(function(){
     // 	$('#CategoryModal').modal('show');

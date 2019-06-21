@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-lg navbar-light main_box">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="{{ url('/')}}"><img src="{{ asset('logo1.png') }}" alt=""></a>
+                <a class="navbar-brand logo_h" href="{{ url('/')}}"><img src="{{ asset('images/logo1.png') }}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
@@ -82,35 +82,14 @@
                             </ul>
                         </li>
                     @endguest
-                    <!-- <li class="nav-item active">
-                        <form class="form-inline">
-                            <input class="form-control form-control-sm mr-3 w-75 form-Inputsearch" type="text" placeholder="Search"
-                            aria-label="Search">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </form>
-                    </li> -->
                     </ul>
-                    <!-- <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item">
-                            <button class="search">
-                                <span class="fa fa-search lnr lnr-magnifier" id="search"></span>
-                            </button>                         
-                        </li>
-                    </ul> -->
                 </div>
             </div>
         </nav>
     </div>
-    <!-- <div class="search_input" id="search_input_box">
-        <div class="container">
-            <form class="d-flex justify-content-between">
-                <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                <button type="submit" class="btn"></button>
-                <span class="fa fa-search lnr lnr-cross" id="close_search" title="Close Search"></span>
-            </form>
-        </div>
-    </div> -->
 </header>
+<br>
+<br>
 <br>
 <br>
 <br>

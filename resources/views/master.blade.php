@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{{asset('logo01.png')}}">
+    <link rel="shortcut icon" href="{{asset('images/logo01.png')}}">
     <title>Sample</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('/extents/links/css/bootstrap.min.css')}}">
@@ -14,25 +14,20 @@
 
     <!-- select2-bootstrap4-theme -->
     <link href="{{asset('/extents/links/css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chenla" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('new/css/main.css')}}">
-    @if (App::isLocale('en'))
-    @else
-      <style type="text/css">
-          /* @font-face {
-              font-family: KhmerOS !important;
-              src: url('{{ asset("cambodianfonts/Unicode/KhmerOS/KhmerOS.ttf") }}');
-          } */
-      </style>
-    @endif
-    
+    <style type="text/css">
+        @font-face {
+            font-family: 'Chenla',"Open Sans", sans-serif;
+        }
+    </style>    
     @yield('style')
   </head>
   <body>
+    @include('layouts.header')
     @yield('content')
-    <!-- Optional JavaScript -->
-
+    @include('layouts.footer')
     <script src="{{asset('new/js/vendor/jquery-2.2.4.min.js')}}"></script>
-    <!-- <script src="{{asset('extents/links/script/jquery.min.js')}}"></script> -->
     <script src="{{asset('extents/links/script/popper.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap-notify.min.js')}}"></script>

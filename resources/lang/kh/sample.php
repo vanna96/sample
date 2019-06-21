@@ -53,7 +53,7 @@ return [
     // required
     
     'required_input' => 'សូមបំពេញចន្លោះនេះ', 
-    'required_select' => 'សូមជ្រើសរើសធាតុនៅក្នុងបញ្ជី',
+    'required_select' => 'សូមជ្រើសរើស',
 
     // category modal
 
@@ -83,4 +83,6 @@ return [
     'len' => 'ប្រភេទ ត្រូវតិច​ជាង25 តួអក្សរ។',
     'cancel' => 'បោះបង់',
     'no_data' => 'មិនមានទិន្នន័យនៅក្នុងតារាង',
+    'view' => 'មើល',
+    'product_detail' => 'ផលិតផលលម្អិត',
 ];

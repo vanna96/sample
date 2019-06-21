@@ -56,7 +56,7 @@ return [
     // required
     
     'required_input' => 'Please fill out this field',
-    'required_select' => 'Please select an item in the list',
+    'required_select' => 'Please select',
 
     // category modal
 
@@ -86,4 +86,6 @@ return [
     'len' => 'Category must less than 25 characters.',
     'cancel' => 'Cancel',
     'no_data' => 'No data available in table',
+    'view' => 'View',
+    'product_detail' => 'Product detail',
 ];

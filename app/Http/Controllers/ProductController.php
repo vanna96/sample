@@ -47,9 +47,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductPost $request)
     {
-        if($request->hasFile('profile')) {
-			$imageName = $this->StoreImage($request->profile);
+        $base64_image = $request->b64;
+        if (preg_match('/^data:image\/(\w+);base64,/', $base64_image)) {
+            $imageName = $this->StoreImage($base64_image);
         }
+
         $product = Product::create([
 			'name' => $request->name,
 			'price' => $request->price,
@@ -75,7 +77,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        if($product){
+            return view('admin.product.show', compact('product'));
+        }
+        return redirect()->route('product.index')->with('error', \Lang::get('sample.pro_not_found'));
+        
     }
 
     /**
@@ -105,8 +112,9 @@ class ProductController extends Controller
     {
         $find_product = Product::find($id);
         if($find_product){
-            if($request->hasFile('profile')) {
-                $imageName = $this->StoreImage($request->profile);
+            $base64_image = $request->b64;
+            if (preg_match('/^data:image\/(\w+);base64,/', $base64_image)) {
+                $imageName = $this->StoreImage($base64_image);
             }
             $oldProfile = $find_product->profile;
             $find_product->update([
@@ -147,9 +155,11 @@ class ProductController extends Controller
 		return redirect()->route('product.index')->with('error', \Lang::get('sample.pro_not_found'));
     }
 
-    private function StoreImage($image){
-        $imageName = time().'.'.$image->getClientOriginalExtension();
-        Storage::disk('product')->put($imageName, file_get_contents($image -> getRealPath()));
+    private function StoreImage($base64_image){
+        $imageName = time().'.png';
+        $data = substr($base64_image, strpos($base64_image, ',') + 1);
+        $data = base64_decode($data);
+        Storage::disk('product')->put($imageName, $data);
         return $imageName;
     }
 

@@ -27,16 +27,13 @@
     }
 </style>
 @endsection
-@section('content')
-@include('layouts.header')
-    <br> 
-    <br>  
-    <div class="container">
-        @include('messages.massage_alert')
-        @include('messages.validate_errors')
-        <div class="banner shadow p-3 mb-5 bg-white rounded">
-            <div class="banner-image"></div>
-            <div class="primary-wrapper">
+@section('content') 
+<div class="container">
+    @include('messages.massage_alert')
+    @include('messages.validate_errors')
+    <div class="banner shadow p-3 mb-5 bg-white rounded">
+        <div class="banner-image"></div>
+        <div class="primary-wrapper">
             <h3 class=""><i class="fa fa-pencil" aria-hidden="true"></i>@lang('sample.create_product')</h3>
             <hr>
             <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
@@ -47,46 +44,48 @@
                         <input type="text" title="@lang('sample.name')" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="@lang('sample.fill_name')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                         <!-- <span class="text-danger">{{ $errors->first('name') }}</span> -->
                     </div>
-                    <div class="form-group col-sm-6 col-xs-6">                        
+                    <div class="form-group col-sm-6 col-xs-6">
                         <label for="category">@lang('sample.category') <span style="color:#a51818">*</span></label>
                         <div class="input-group">
                             <select class="form-control category_selected @error('category') is-invalid @enderror" title="@lang('sample.category')" name="category" id="category_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')" style="width:10%;">
                                 <option value="" disabled selected>@lang('sample.required_select')</option>
                                 @if(isset($categories) && count($categories) > 0)
-                                    @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                                 @endif
                             </select>
                             <div class="input-group-append">
-                                <a data-toggle="modal" data-target="#CategoryModal" style="background-color: #e8e4e4; width: 36px;"><center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center></a>
+                                <a data-toggle="modal" data-target="#CategoryModal" style="background-color: #e8e4e4; width: 36px;">
+                                    <center><i class="fa fa-pencil" aria-hidden="true" style="font-size:35px;"></i></center>
+                                </a>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="price">@lang('sample.price') <span style="color:#a51818">*</span></label>
                         <input type="number" title="@lang('sample.price')" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 189 ? false : true"
-                        class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
+                            class="form-control @error('price') is-invalid @enderror" step="any" name="price" value="{{ old('price') }}" maxlength = 10 placeholder="@lang('sample.fill_price')" oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="status" >@lang('sample.status') <span style="color:#a51818">*</span></label>
                         <select class="form-control @error('status') is-invalid @enderror" title="@lang('sample.status')" name="status" id="status_selected" oninvalid="this.setCustomValidity('@lang('sample.required_select')')" oninput="setCustomValidity('')">
-                            <option value="" disabled selected>@lang('sample.required_select')</option>                            
+                            <option value="" disabled selected>@lang('sample.required_select')</option>
                             <option value="0" >@lang('sample.draf')</option>
                             <option value="1" >@lang('sample.publish')</option>
                         </select>
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
-                        
                         <label for="status">@lang('sample.profile') 
-                                <span style="color:#a51818">*</span>
+                        <span style="color:#a51818">*</span>
                         </label>
                         <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror"  oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')" id="imgInp">
+                        <input type="hidden" id="b64" name="b64" value="{{ old('b64') }}">
+                        <!-- <input type="hidden" id="b64_preview" name="b64_preview" > -->
                         <br>
                         <div class="col-xs-4 col-sm-4" style="padding: 0px">
-                            <img id="blah" src="{{asset('default.png')}}" class="img-responsive img-radio" style="width: 160px; height: 150px">
+                            <img id="blah" src="{{ old('b64') ? old('b64'): asset('images/default.png')}}" class="img-responsive img-radio" style="width: 160px; height: 150px">
                         </div>
-                        
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">@lang('sample.description') <span style="color:#a51818">*</span></label>
@@ -95,19 +94,20 @@
                     <div class="form-group col-sm-12 col-xs-12" >
                         <div style="float: right;">
                             <a href="{{route('product.index')}}" class="btn btn-danger">
-                                @lang('sample.cancel')
+                            @lang('sample.cancel')
                             </a>
-                            <button type="submit"  class="btn btn-primary" id="submit">@lang('sample.save') || @lang('sample.update')</button>
-                        </div>                        
+                            <button type="submit"  class="btn btn-primary" id="submit">@lang('sample.save')</button>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <!-- CategoryModal -->
-    <div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="CategoryModalLabel" aria-hidden="true">
-        @include('admin.modal.category_modal')
-    </div>
+</div>
+<!-- CategoryModal -->
+<div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="CategoryModalLabel" aria-hidden="true">
+    @include('admin.modal.category_modal')
+</div>
 @endsection
 @section('script')
 <script>
