@@ -18,7 +18,7 @@
                 <div class="col-sm-4" style="margin-bottom: 10px;">
                     @if(file_exists( public_path('storage/products/'). $product->profile))
                             <a href="{{asset('storage/products/'.$product->profile)}}" target="_blank">
-                            <img src="{{asset('storage/products/'.$product->profile)}}" style="width:100%">
+                            <img src="{{asset('storage/products/'.$product->profile)}}" style="width:100%; border-radius:5px">
                             </a>                                        
                         @else
                         @endif

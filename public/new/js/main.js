@@ -30,16 +30,6 @@ $(document).ready(function(){
         }
     });
 
-    // Search Toggle
-    $("#search_input_box").hide();
-    $("#search").on("click", function () {
-        $("#search_input_box").slideToggle();
-        $("#search_input").focus();
-    });
-    $("#close_search").on("click", function () {
-        $('#search_input_box').slideUp(500);
-    });
-
     /*==========================
     javaScript for sticky header
     ============================*/
@@ -262,8 +252,11 @@ $(document).ready(function(){
       }
       
     }
-    
-    document.getElementById("imgInp").addEventListener("change", readFile);
+
+    var el = document.getElementById("imgInp");
+    if(el){
+      el.addEventListener("change", readFile);
+    }
 
     // modal pencil create category
     $('#CategoryModal').on('shown.bs.modal', function () {

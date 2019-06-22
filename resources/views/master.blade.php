@@ -27,18 +27,17 @@
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
-    <script src="{{asset('new/js/vendor/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('new/js/jquery-2.2.4.min.js')}}"></script>
     <script src="{{asset('extents/links/script/popper.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap.min.js')}}"></script>
     <script src="{{asset('extents/links/script/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('new/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('new/js/jquery.sticky.js')}}"></script>
-    <script src="{{asset('new/js/nouislider.min.js')}}"></script>
     <script src="{{asset('new/js/jquery.magnific-popup.min.js')}}"></script>    
     <script src="{{asset('extents/links/script/select2.min.js')}}"></script>
     <script src="{{asset('new/js/main.js')}}"></script>
     <script>
-        $('select').each(function () {
+        $('select#category_selected').each(function () {
             $(this).select2({
                 theme: 'bootstrap4',
                 width: 'style',
@@ -58,6 +57,15 @@
                         return 0;
                     });
                 }
+            });
+        });
+        $('select#status_selected').each(function () {
+            $(this).select2({
+                theme: 'bootstrap4',
+                width: 'style',
+                height:'auto',
+                placeholder: $(this).attr('placeholder'),
+                allowClear: Boolean($(this).data('allow-clear'))
             });
         });
         // delete product
