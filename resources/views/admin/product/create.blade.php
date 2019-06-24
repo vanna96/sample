@@ -77,7 +77,6 @@
                     </div>
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="status">@lang('sample.profile') 
-                        <span style="color:#a51818">*</span>
                         </label>
                         <input type="file" title="@lang('sample.profile')" name="profile" class="form-control @error('profile') is-invalid @enderror"  oninvalid="this.setCustomValidity('@lang('sample.required_input')')" oninput="setCustomValidity('')" id="imgInp">
                         <input type="hidden" id="b64" name="b64" value="{{ old('b64') }}">
