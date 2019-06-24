@@ -251,6 +251,18 @@
                 });
             }
         });
+        // footer
+        function scrollBars(){
+            var body= $('body')[0]
+            return {
+                vertical:body.scrollHeight>body.clientHeight,
+                horizontal:body.scrollWidth>body.clientWidth
+            }
+        }
+        if (scrollBars().vertical){
+        }else{
+            $('footer').css({'position':'fixed', 'width':'100%', 'bottom':'0px'});
+        }
     </script>
     @yield('script')
   </body>
