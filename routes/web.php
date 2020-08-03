@@ -23,15 +23,21 @@ Route::group(['middleware' => ['auth', 'authLog']], function () {
     //Category
     Route::resource('category', 'CategoryController')->except('show');    
     Route::post('category/ajax', 'CategoryController@ajax')->name('ajax');
-
     // product   
     Route::resource('product', 'ProductController');
-
+    // sub domain   
+    Route::resource('sub-domain', 'SubDomainController');
+    // sms   
+    Route::resource('sms', 'SMSController');
     // translate
-
     Route::get('locale/{locale}', function($locale){
         Session::put('locale', $locale);
         return redirect()->back();
     });
+    
 });
 
+Route::domain('{username}.localhost:8000')->group(function () {
+    
+    Route::get('/dashboard', 'HomeController@index1')->name('index1');
+});

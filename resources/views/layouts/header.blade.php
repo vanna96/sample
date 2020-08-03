@@ -43,6 +43,18 @@
                                 <li class="nav-item"><a class="nav-link" href="{{ route('category.create') }}">@lang('sample.create')</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item submenu dropdown" id="testing-list">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                             aria-expanded="false"> <i class="fa fa-list-alt" aria-hidden="true"></i>Testing</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('sub-domain.create') }}">Sub Domain</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('sms.create') }}">SMS</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                              aria-expanded="false"><i class="fa fa-language" aria-hidden="true"></i>   @if (App::isLocale('en'))
